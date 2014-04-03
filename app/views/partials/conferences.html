@@ -1,0 +1,70 @@
+<ion-view title="Conferences">
+    <section class="bar bar-subheader item-input-inset no-border">
+        <div class="button-bar">
+            <a class="button" ng-click="search.day = $; numButton = 0" ng-class="{activeDay :numButton == 0}">All Day</a>
+            <a class="button" ng-click="search.day = 1; numButton = 1" ng-class="{activeDay :numButton == 1}">Day 1</a>
+            <a class="button" ng-click="search.day = 2; numButton = 2" ng-class="{activeDay :numButton == 2}">Day 2</a>
+        </div>
+    </section>
+    <section class="bar bar-subheader item-input-inset">
+        <p class="nbConference col">{{(conferences |filter:search).length}} conferences</p>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="sortByRooms">
+        </label>
+        Sort by rooms
+    </section>
+
+    <ion-content class="has-subheader has-tabs" padding="true">
+        <br/>
+        <!--Sort by Room-->
+        <ion-list ng-show="sortByRooms" >
+            <div class="schedule-tab" ng-repeat="itemSchedule in scheduleconferences">
+                <p ng-model="schedule.when.start">Start {{itemSchedule}}</p>
+                 <ion-item ng-repeat="conference in conferences | scheduleByConference:itemSchedule | filter:search | orderBy:'where'" ng-click="DisplayConference(conference)">
+                    <div ng-class="{activeConference: conference._id==selectedConferenceId}">
+                        <div class ="row">
+                            <p class="col col-20 room-conference">R {{conference.where}}</p>
+                            <p class="col col-80"><strong>{{conference.title}}</strong></p>
+                        </div>
+                        <div ng-show="conference._id==selectedConferenceId">
+                            <div class="row">
+                                <p class="col">{{conference.title}}</p>
+                            </div>
+                            <div class="row">
+                                <p class="col">Schedule : {{conference.when.start}} - {{conference.when.end}}</p>
+                            </div>
+                            <div class="row">
+                                <p class="col col-67 theme-conference">{{conference.theme}} </p>
+                                <button class="col col-33 button button-calm button-view-more" ng-click="viewConference(conference._id)" >View More</button>
+                            </div>
+                        </div>
+                    </div>
+                 </ion-item>
+            </div>
+        </ion-list>
+
+        <!--All view-->
+        <ion-list ng-show="!sortByRooms">
+            <ion-item class="item" ng-repeat="conference in conferences |filter:search | orderBy:'when.start'" ng-click="viewConference(conference._id)">
+                <div class="row">
+                    <p class="col"><strong>{{conference.title}}</strong></p>
+                </div>
+                <div class="row">
+                    <p class="col">Schedule : {{conference.when.start}} - {{conference.when.end}}</p>
+                </div>
+                <div class="row">
+                    <p class="col theme-conference">{{conference.theme}}</p>
+                </div>
+                <div class="row">
+                    <p class="col col-33 room-conference">Room {{conference.where}}</p>
+                    <button class="col col-offset-25 button button-assertive button-add-agenda" ng-click="addToAgenda(conference)" >Add Agenda</button>
+                </div>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>
+
+
+
+

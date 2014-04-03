@@ -1,0 +1,36 @@
+<ion-view title="Conference information">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="backConferences()">
+            <i class="ion-chevron-left"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header has-tabs" padding="true">
+
+
+        <section class="info-conference">
+            <div class="row">
+                <p class="col center"><strong>{{conference.title}}</strong></p>
+            </div>
+            <div class="row">
+                <p class="col ion-mic-c"> Speaker : {{conference.author}}</p>
+            </div>
+            <div class="row">
+                <p class="col ion-calendar"> Day : {{conference.day}}</p>
+            </div>
+            <div class="row">
+                <p class="col ion-clock"> Schedule : {{conference.when.start}} - {{conference.when.end}}</p>
+            </div>
+            <div class="row">
+                <p class="col col-33 room-detail-conference" >Room {{conference.where}}</p>
+                <p class="col col-67 theme-detail-conference center">{{conference.theme}} </p>
+            </div>
+            <div class="row">
+                <button class="button button-block button-assertive">
+                    Add to Agenda
+                </button>
+            </div>
+        </section>
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,24 @@
+<ion-view title="Access Map">
+    <ion-content class="has-header has-tabs" padding="true">
+
+        <p>Access Plan</p>
+
+        <google-map center="map.center" zoom="map.zoom" draggable="true" refresh="true">
+
+            <marker coords="map.markerWorldline">
+                <window isIconVisibleOnClick="true">
+                    <img src="data\marker-worldline.png"/>
+                    <p>
+                        <strong>Atos Worldline</strong><br/>
+                        <span style="font-style: italic">23 Rue de la Pointe 59113 Seclin</span>
+                    </p>
+                </window>
+            </marker>
+
+
+        </google-map>
+
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,119 @@
+/*****************************\
+*      Conference List        *
+\*****************************/
+.item{
+    margin-bottom: 10px;
+}
+.item:first-child{
+    margin-top:25px;
+}
+.nbConference{
+    font-style: italic;
+    margin-right: 10px;
+}
+.activeDay{
+    background-color: #e5e5e5;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15);
+    border-color: #a2a2a2;
+}
+.activeConference{
+    height: 160px;
+}
+p.theme-conference{
+    font-style: italic;
+    font-weight: bold;
+    color: #f0b840;
+}
+p.center{
+    text-align: center;
+}
+
+.italic{
+    font-style: italic;
+}
+
+p.theme-detail-conference{
+    color: #ffffff;
+    font-size: 13px;
+    background-color: #f0b840;
+    border-radius: 10px;
+    text-align: center;
+    height: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+p.room-conference{
+    color: #ffffff;
+    font-size: 11px;
+    background-color: #838585;
+    border-radius: 10px;
+    text-align: center;
+    height: 30px;
+}
+p.room-detail-conference{
+    color: #ffffff;
+    font-size: 13px;
+    background-color: #838585;
+    border-radius: 10px;
+    text-align: center;
+    height: 30px;
+}
+.button-add-agenda{
+    font-size: 12px;
+    text-align: center;
+}
+.button-view-more{
+    font-size: 12px;
+    text-align: center;
+    height: auto;
+}
+
+.info-conference{
+    background: #F5F5F5 no-repeat 10px 15px;
+    border: 1px solid #C0C0C0;
+    color: #404040;
+    padding: 10px 10px 10px 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 3px 3px 6px 0 #A9A9A9;
+    -webkit-box-shadow: 3px 3px 6px #A9A9A9;
+    box-shadow: 3px 3px 6px 0 #A9A9A9;
+}
+
+.schedule-tab{
+    border : 1px solid #e5e5e5;
+    background-color: #e5e5e5;
+    padding :5px;
+    margin-top: 20px;
+}
+
+/*****************************\
+*          Menu               *
+\*****************************/
+
+.no-border{
+    border : 0px;
+}
+
+/** réécriture du css ionic pour l'adapter au couleur de atos**/
+.bar.bar-positive {
+    background-color: #0066A1;
+}
+.tab-item.tab-item-active{
+    border-top : 2px solid #0066A1;
+}
+
+/*****************************\
+*          test               *
+\*****************************/
+
+.angular-google-map-container { height: 300px; }
+/*
+.col{
+    background-color: #e5e5e5;
+    border :1px solid black;
+}*/
+
+
+
