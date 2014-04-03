@@ -1,4 +1,4 @@
-<ion-view title="Conference information">
+<ion-view title="Conference information" ng-init="getConference()">
     <ion-nav-buttons side="left">
         <button class="button button-clear" ng-click="backConferences()">
             <i class="ion-chevron-left"></i>
@@ -6,19 +6,18 @@
     </ion-nav-buttons>
     <ion-content class="has-header has-tabs" padding="true">
 
-
         <section class="info-conference">
             <div class="row">
                 <p class="col center"><strong>{{conference.title}}</strong></p>
             </div>
             <div class="row">
-                <p class="col ion-mic-c"> Speaker : {{conference.author}}</p>
+                <p class="col ion-mic-c"> Speaker : <span class="italic">{{conference.author}}</span></p>
             </div>
             <div class="row">
-                <p class="col ion-calendar"> Day : {{conference.day}}</p>
+                <p class="col ion-calendar"> Day : <span class="italic">{{conference.day}}<span class="italic"></p>
             </div>
             <div class="row">
-                <p class="col ion-clock"> Schedule : {{conference.when.start}} - {{conference.when.end}}</p>
+                <p class="col ion-clock"> Schedule : <span class="italic">{{conference.when.start}} - {{conference.when.end}}<span class="italic"></p>
             </div>
             <div class="row">
                 <p class="col col-33 room-detail-conference" >Room {{conference.where}}</p>
@@ -29,6 +28,10 @@
                     Add to Agenda
                 </button>
             </div>
+        </section>
+
+        <section>
+            <p>Here a twitter plugin or a conference with a same tag</p>
         </section>
 
 

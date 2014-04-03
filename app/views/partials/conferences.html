@@ -1,4 +1,4 @@
-<ion-view title="Conferences">
+<ion-view title="Conferences" ng-init="getAllConf()">
     <section class="bar bar-subheader item-input-inset no-border">
         <div class="button-bar">
             <a class="button" ng-click="search.day = $; numButton = 0" ng-class="{activeDay :numButton == 0}">All Day</a>

@@ -1,4 +1,7 @@
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", function(){
+    console.log("Launch App techForum - deviceReady");
+    navigator.splashscreen.show();
+}, false);
 
 // device APIs are available
 function onDeviceReady() {

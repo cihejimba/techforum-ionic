@@ -5,14 +5,13 @@ Mobile Application for Worldline TechForum
 Service : SDCO - Software Engineering - Web & Mobile Framework
 Developer : Maxime Gens
 
-Launch application :
+First :
 
 *** install Node.js
 => http://nodejs.org/
 
 *** install cordova and ionic
 npm install -g cordova
-npm install -g ionic
 
 *** install node_modules with :
 npm install
@@ -20,10 +19,88 @@ npm install
 *** install dependencies
 bower install
 
+
+*** English Version ***
+
+Launch application  :
+
 *** launch server
 node server.js
 
 Application is now available in http://localhost:3000
+
+Launch in your phone :
+
+Create a folder with
+
+*** Version Française ***
+
+Lancement sur votre téléphone :
+
+Créer un dossier avec la commande
+cordova create TechForum com.worldline.techforum "TechForum 2014"
+
+Rendez vous dans le dossier "TechForum"
+cd TechForum
+
+Vous devez ajouter une plate-forme (android - ios - window8 - blackberry10 ...)
+Pour compiler sur IOS
+cordova platforms add ios
+Pour compiler sur Android
+cordova platforms add android
+
+Vous devez ensuite ajouter les plugins Cordova utilisé dans l'application
+Plugin SplashScreen
+cordova plugin add org.apache.cordova.splashscreen
+Plugin Geolocalisation
+cordova plugin add org.apache.cordova.geolocation
+
+Remplacez le contenu du fichier config.xml par :
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.worldline.techforum" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">>
+    <name>TechForum 2014</name>
+    <description>
+        Application TechForum 2014 Atos WorldLine.
+    </description>
+    <author email="maxime.gens@worldline.com" href="http://worldline.com/en/1/Home.html">
+        Maxime Gens - SDCO - Software Engineering - Web and Mobile Frameworks
+    </author>
+    <content src="app/index.html" />
+    <access origin="*" />
+
+    <!-- config android -->
+    <preference name="Fullscreen" value="true" />
+    <preference name="SplashScreen" value="splashscreen" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+</widget>
+
+Supprimer le contenu du dossier "www"
+Copier ensuite le contenu que vous avez récupéré avec git dans le dossier "www"
+Récupérez les dépendances.
+cd www
+npm install
+bower install
+
+Placez vous à la racine du projet
+
+Compilez
+cordova build
+
+branchez votre téléphone et vérifier que adb le repére correctement
+adb devices
+votre téléphone doit apparaitre sinon un émulateur se lancera
+
+Exécutez l'application
+cordova run
+
+L'application se lancera sur votre téléphone
+
+
+
 
 
 /***probleme **/

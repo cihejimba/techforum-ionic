@@ -17,20 +17,23 @@ angular.module('app')
         $scope.sortByRooms = true;
         $scope.selectedConferenceId = -1;
 
-        ConferencesService.getLocalConferences().query(
-            function(data){
-                console.log("Success to retreive Local Conference");
-                $scope.conferences = data;
-                $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
-                $scope.loading.hide();
-                $scope.updateConference();
-            },
-            function(reason){
-                console.log("Impossible to retreive Local Conference");
-                $scope.loading.hide();
-                alert('Unable to retrieve conferences list');
-            }
-        );
+        $scope.getAllConf = function(){
+            ConferencesService.getLocalConferences().query(
+                function(data){
+                    console.log("Success to retreive Local Conference");
+                    $scope.conferences = data;
+                    $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
+                    $scope.updateConference();
+                },
+                function(reason){
+                    console.log("Impossible to retreive Local Conference");
+                    alert('Unable to retrieve conferences list');
+                }
+            ).$promise.then(function(){
+                    $scope.loading.hide();
+                });
+         }
+
 
         $scope.updateConference = function(){
             ConferencesService.getOnlineConference().query(
@@ -60,7 +63,6 @@ angular.module('app')
         }
 
         $scope.viewConference = function(idConference){
-            console.log(idConference);
             $state.go('tab.conference-detail',{conferenceId: idConference})
         }
 

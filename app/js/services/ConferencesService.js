@@ -12,7 +12,7 @@ app.factory('ConferencesService', ['$resource','$http','$q', function($resource,
             return confFactory.conferencesResource;
         },
         getConferencebyId : function(pId) {
-            return confFactory.conferencesResource.get({id:pId});
+           return confFactory.conferencesResource.get({id:pId});
         },
         sortConferenceByStart : function(pConference){
             var tab =[]
