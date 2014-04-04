@@ -2,7 +2,6 @@ angular.module('app')
     .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state', function($scope,ConferencesService,$ionicLoading,$state)
     {
         console.log('--- ConferencesController ---');
-
         $scope.loading = $ionicLoading.show({
             content: '<div>Loading<br><figure><img src="data/atos-loader.gif"/></figure></div>',
             animation: 'fade-in',
@@ -13,7 +12,7 @@ angular.module('app')
 
         $scope.conferences = [];
         $scope.scheduleconferences = [];
-        $scope.numButton = 0;
+        $scope.numButton = 1;
         $scope.sortByRooms = true;
         $scope.selectedConferenceId = -1;
 
@@ -33,7 +32,6 @@ angular.module('app')
                     $scope.loading.hide();
                 });
          }
-
 
         $scope.updateConference = function(){
             ConferencesService.getOnlineConference().query(
@@ -69,5 +67,4 @@ angular.module('app')
         $scope.addToAgenda =function(conference){
             alert("Do you want to add\n\""+conference.title+"\"\non your agenda ?");
         }
-
     }]);

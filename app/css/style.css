@@ -89,6 +89,23 @@ p.room-detail-conference{
 }
 
 /*****************************\
+*          Conference         *
+\*****************************/
+.title-comments{
+    font-style: italic;
+    margin-top: 10px;
+}
+.item.comment-item:first-child{
+    margin-top:5px;
+}
+legend{
+    border : 0px;
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*****************************\
 *          Menu               *
 \*****************************/
 

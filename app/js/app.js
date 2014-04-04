@@ -13,10 +13,7 @@ function onDeviceReady() {
 var app = angular.module('app', ['ionic','ngResource','techForum.filters','google-maps'])
 
 app.config(function($stateProvider, $urlRouterProvider) {
-
         $stateProvider
-
-            // setup an abstract state for the tabs directive
             .state('tab', {
                 url: "/tab",
                 abstract: true,
@@ -68,6 +65,4 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             });
         $urlRouterProvider.otherwise('/tab/home');
-
     });
-

@@ -2,13 +2,11 @@ angular.module('app')
     .controller('AccessController', ['$scope', function($scope)
     {
         console.log('--- AccessController ---');
-
         /* Default Worldline Seclin **/
         $scope.worldlineGPS ={
             latitude: 50.567593,
             longitude: 3.029413
         }
-
         $scope.map = {
             center: {
                 latitude: $scope.worldlineGPS.latitude,
@@ -23,7 +21,6 @@ angular.module('app')
             },
             zoom: 14
         };
-
         navigator.geolocation.getCurrentPosition(
             function(position){
                 $scope.map.center.latitude = position.coords.latitude;
@@ -33,6 +30,4 @@ angular.module('app')
               $scope.positioninfo = error;
             }
         );
-
-
     }]);

@@ -55,6 +55,13 @@ cordova plugin add org.apache.cordova.splashscreen
 Plugin Geolocalisation
 cordova plugin add org.apache.cordova.geolocation
 
+Si vous rencontré des problémes pour récupérer les plugins
+download the git of the plugin using the zip download of git site
+https://github.com/apache/cordova-plugin-splashscreen
+https://github.com/apache/cordova-plugin-geolocation
+extract the zip to some path
+run cordova plugin add pathtotheextractedplugingit
+
 Remplacez le contenu du fichier config.xml par :
 
 <?xml version='1.0' encoding='utf-8'?>

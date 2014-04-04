@@ -1,4 +1,4 @@
-app.factory('ConferencesService', ['$resource','$http','$q', function($resource,http,$q) {
+app.factory('ConferencesService', ['$resource', function($resource) {
 
     var confFactory = {
         conferencesResource : [],
@@ -37,7 +37,8 @@ app.factory('ConferencesService', ['$resource','$http','$q', function($resource,
          }
     };
 
-
+    return confFactory;
+}]);
     // pense bete //
     /* var deferred = $q.defer();
      $resource('http://techforum-worldline.rhcloud.com//conferences/:id',{id:'@id'}).query(
@@ -62,5 +63,4 @@ app.factory('ConferencesService', ['$resource','$http','$q', function($resource,
     /*        $scope.three = conferencesResource.get({id:'5190fcc8c546978c4c000003'});*/
 
 
-    return confFactory;
-}]);
+

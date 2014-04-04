@@ -1,17 +1,18 @@
 <ion-view title="Conferences" ng-init="getAllConf()">
     <section class="bar bar-subheader item-input-inset no-border">
-        <div class="button-bar">
-            <a class="button" ng-click="search.day = $; numButton = 0" ng-class="{activeDay :numButton == 0}">All Day</a>
+        <div class="button-bar" ng-init="search.day = 1">
+<!--           <a class="button" ng-click="search.day = $; numButton = 0" ng-class="{activeDay :numButton == 0}">All Day</a>-->
             <a class="button" ng-click="search.day = 1; numButton = 1" ng-class="{activeDay :numButton == 1}">Day 1</a>
             <a class="button" ng-click="search.day = 2; numButton = 2" ng-class="{activeDay :numButton == 2}">Day 2</a>
         </div>
     </section>
     <section class="bar bar-subheader item-input-inset">
-        <p class="nbConference col">{{(conferences |filter:search).length}} conferences</p>
+        <p class="nbConference col">{{(conferences |filter:search).length}} conferences in day {{search.day}}</p>
         <label class="checkbox">
             <input type="checkbox" ng-model="sortByRooms">
         </label>
-        Sort by rooms
+
+        Sort by time slot
     </section>
 
     <ion-content class="has-subheader has-tabs" padding="true">
@@ -20,7 +21,7 @@
         <ion-list ng-show="sortByRooms" >
             <div class="schedule-tab" ng-repeat="itemSchedule in scheduleconferences">
                 <p ng-model="schedule.when.start">Start {{itemSchedule}}</p>
-                 <ion-item ng-repeat="conference in conferences | scheduleByConference:itemSchedule | filter:search | orderBy:'where'" ng-click="DisplayConference(conference)">
+                 <ion-item ng-repeat="conference in conferences  | scheduleByConference:itemSchedule | filter:search | orderBy:'where'" ng-click="DisplayConference(conference)">
                     <div ng-class="{activeConference: conference._id==selectedConferenceId}">
                         <div class ="row">
                             <p class="col col-20 room-conference">R {{conference.where}}</p>
@@ -40,6 +41,7 @@
                         </div>
                     </div>
                  </ion-item>
+                <p ng-hide="(conferences  | scheduleByConference:itemSchedule | filter:search).length">No conference for this time</p>
             </div>
         </ion-list>
 
