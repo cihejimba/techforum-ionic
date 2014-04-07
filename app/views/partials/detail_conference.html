@@ -35,7 +35,7 @@
                 <legend>Post a comment</legend>
                 Name : <input type="text" ng-model="newComment.name" placeholder="name"/>
                 Content : <input type="text" ng-model="newComment.msg" placeholder="msg"/>
-                <button class="button" ng-click="getComments()"></button><br/>
+                <button class="button" ng-click="getComments()">Send comment</button><br/>
             </fieldset>
 
         </section>
@@ -43,7 +43,7 @@
         <section>
             <p class="title-comments">Comments</p>
             <ion-list >
-                <ion-item class="comment-item" ng-repeat="comment in comments">
+                <ion-item class="comment-item" ng-repeat="comment in comments |date:comment.date">
                     <div class="row">
                         <p class="col"><strong>Name : {{comment.name}}</strong></p>
                     </div>

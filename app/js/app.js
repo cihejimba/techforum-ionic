@@ -1,14 +1,7 @@
-document.addEventListener("deviceready", function(){
+/*document.addEventListener("deviceready", function(){
     console.log("Launch App techForum - deviceReady");
-    navigator.splashscreen.show();
-}, false);
-
-// device APIs are available
-function onDeviceReady() {
-    /** ici du code au lancement de l'application**/
-    console.log("Launch App techForum - deviceReady");
-    navigator.splashscreen.show();
-}
+    navigator.splashscreen.hide();
+}, false);*/
 
 var app = angular.module('app', ['ionic','ngResource','techForum.filters','google-maps'])
 

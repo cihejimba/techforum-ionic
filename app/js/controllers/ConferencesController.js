@@ -22,15 +22,15 @@ angular.module('app')
                     console.log("Success to retreive Local Conference");
                     $scope.conferences = data;
                     $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
+                    $scope.loading.hide();
                     $scope.updateConference();
                 },
                 function(reason){
                     console.log("Impossible to retreive Local Conference");
                     alert('Unable to retrieve conferences list');
-                }
-            ).$promise.then(function(){
                     $scope.loading.hide();
-                });
+                }
+            )
          }
 
         $scope.updateConference = function(){

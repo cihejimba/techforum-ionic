@@ -18,7 +18,6 @@ angular.module('app')
             $scope.conference.$promise.then(function(data){
                 $scope.getComments();
                 console.log(data);
-                $scope.loading.hide();
             })
         }
 
@@ -28,9 +27,12 @@ angular.module('app')
         $scope.getComments = function(){
             MessagesService.getOnlineMsgCommentByIdConference(idConference).query(
                 function(data){
+                    console.log(data);
                     $scope.comments = data;
+                    $scope.loading.hide();
                 },function(reason){
                     console.log(reason);
+                    $scope.loading.hide();
                 }
             );
         }

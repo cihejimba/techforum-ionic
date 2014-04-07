@@ -91,6 +91,7 @@ p.room-detail-conference{
 /*****************************\
 *          Conference         *
 \*****************************/
+
 .title-comments{
     font-style: italic;
     margin-top: 10px;
@@ -103,6 +104,19 @@ legend{
     width: auto;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+/*****************************\
+*          Map                *
+\*****************************/
+.list-map{
+    padding-left: 20px;
+}
+
+.button-geo{
+    margin :5px;
+    padding: 0px;
+    height: 20px;
 }
 
 /*****************************\

@@ -5,7 +5,9 @@ app.factory('MessagesService', ['$resource', function($resource) {
         commentResource : [],
 
         getOnlineMsgCommentByIdConference : function (idConference){
-            return $resource('http://techforum-worldline.rhcloud.com//messages/comments/:id',{id:'@id'});
+            var r =  $resource('http://techforum-worldline.rhcloud.com//messages/comments/:id',{idConference:'@id'});
+            console.log(r);
+            return r;
         },
         getOnlineMsgComment : function (){
             msgFactory.commentResource = $resource('http://techforum-worldline.rhcloud.com//messages/comments/');
