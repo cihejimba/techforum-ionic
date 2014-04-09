@@ -19,6 +19,20 @@
             <div class="row">
                 <p class="col ion-clock"> Schedule : <span class="italic">{{conference.when.start}} - {{conference.when.end}}<span class="italic"></p>
             </div>
+
+            <div class="row">
+                <p class="col-33 col-center ion-compose"> Description</p>
+                <div class=" col-67 item item-divider icon ion-chevron-down show-description" ng-click="displayDescription()" ng-class="{'ion-chevron-up' :showHideComment == 'hide'}">
+                    {{showHideComment}} description
+                </div>
+            </div>
+
+            <div class="row" ng-show="showHideComment == 'hide'">
+                 <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad,
+                     distinctio eos laudantium molestias mollitia nam nulla tempore velit vero.
+                     Consequatur earum, eius in iure non repellat saepe soluta sunt.</p>
+            </div>
+
             <div class="row">
                 <p class="col col-33 room-detail-conference" >Room {{conference.where}}</p>
                 <p class="col col-67 theme-detail-conference center">{{conference.theme}} </p>
@@ -42,6 +56,7 @@
 
         <section>
             <p class="title-comments">Comments</p>
+            <p ng-hide="comments.length">No comments for this conferences {{loadingComment}}</p>
             <ion-list >
                 <ion-item class="comment-item" ng-repeat="comment in comments |date:comment.date">
                     <div class="row">

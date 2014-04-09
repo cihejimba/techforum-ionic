@@ -102,9 +102,20 @@ p.room-detail-conference{
 legend{
     border : 0px;
     width: auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
+.description{
+    text-indent:20px;
+    padding: 5px;
+    text-align: justify;
+    border : 1px solid #e5e5e5;
+    background-color: #ffffff;
+}
+.show-description{
+    background-color: #C6D0CE;
+}
+
 
 /*****************************\
 *          Map                *

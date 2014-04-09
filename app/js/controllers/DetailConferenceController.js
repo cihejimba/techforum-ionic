@@ -4,20 +4,27 @@ angular.module('app')
         console.log('--- DetailConferenceController ---');
         var idConference = $stateParams.conferenceId;
         $scope.comments = [];
+        $scope.loadingComment = "loading...";
+        $scope.showHideComment = 'show';
 
-        $scope.loading = $ionicLoading.show({
-            content: '<div>Loading<br><figure><img src="data/atos-loader.gif"/></figure></div>',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
+        $scope.displayDescription = function(){
+            if($scope.showHideComment == 'show'){
+                $scope.showHideComment = 'hide';
+            }else
+                $scope.showHideComment = 'show';
+        }
 
         $scope.getConference = function(){
-            $scope.conference = ConferencesService.getConferencebyId(idConference);
-            $scope.conference.$promise.then(function(data){
-                $scope.getComments();
-                console.log(data);
+            ConferencesService.getLocalConferences().query(function(data){
+                angular.forEach(data,function(conference , key) {
+                    if (conference._id == idConference) {
+                        $scope.getComments();
+                        return $scope.conference = conference;
+                    }
+                })
+            },function(reason){
+                console.log(reason);
+                alert('Enable to retrieve a conference with id '+idConference);
             })
         }
 
@@ -29,10 +36,10 @@ angular.module('app')
                 function(data){
                     console.log(data);
                     $scope.comments = data;
-                    $scope.loading.hide();
+                    $scope.loadingComment = "";
                 },function(reason){
                     console.log(reason);
-                    $scope.loading.hide();
+                    $scope.loadingComment = "";
                 }
             );
         }

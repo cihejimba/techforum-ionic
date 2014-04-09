@@ -8,11 +8,8 @@ app.factory('ConferencesService', ['$resource', function($resource) {
             return confFactory.conferencesResource;
         },
         getLocalConferences : function(){
-            confFactory.conferencesResource = $resource('data/conferences/:id.json',{id:'@id'});
+            confFactory.conferencesResource = $resource('data/conferences.json');
             return confFactory.conferencesResource;
-        },
-        getConferencebyId : function(pId) {
-           return confFactory.conferencesResource.get({id:pId});
         },
         sortConferenceByStart : function(pConference){
             var tab =[]

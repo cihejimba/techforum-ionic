@@ -3,7 +3,7 @@
     navigator.splashscreen.hide();
 }, false);*/
 
-var app = angular.module('app', ['ionic','ngResource','techForum.filters','google-maps'])
+var app = angular.module('app', ['ionic','ngResource','techForum.filters'/*,'google-maps'*/])
 
 app.config(function($stateProvider, $urlRouterProvider) {
         $stateProvider

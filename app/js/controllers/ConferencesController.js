@@ -19,21 +19,20 @@ angular.module('app')
         $scope.getAllConf = function(){
             ConferencesService.getLocalConferences().query(
                 function(data){
-                    console.log("Success to retreive Local Conference");
                     $scope.conferences = data;
                     $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
                     $scope.loading.hide();
                     $scope.updateConference();
                 },
                 function(reason){
-                    console.log("Impossible to retreive Local Conference");
+                    console.log(reason);
                     alert('Unable to retrieve conferences list');
                     $scope.loading.hide();
                 }
             )
          }
 
-        $scope.updateConference = function(){
+       $scope.updateConference = function(){
             ConferencesService.getOnlineConference().query(
                 function(confOnline){
                     console.log('Same confLocal-confOnline : '+ ConferencesService.checkSameConferences($scope.conferences,confOnline));
