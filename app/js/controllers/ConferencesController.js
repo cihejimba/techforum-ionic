@@ -1,14 +1,7 @@
 angular.module('app')
-    .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state', function($scope,ConferencesService,$ionicLoading,$state)
+    .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state','$timeout', function($scope,ConferencesService,$ionicLoading,$state,$timeout)
     {
         console.log('--- ConferencesController ---');
-        $scope.loading = $ionicLoading.show({
-            content: '<div>Loading<br><figure><img src="data/atos-loader.gif"/></figure></div>',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
 
         $scope.conferences = [];
         $scope.scheduleconferences = [];
@@ -17,22 +10,41 @@ angular.module('app')
         $scope.selectedConferenceId = -1;
 
         $scope.getAllConf = function(){
-            ConferencesService.getLocalConferences().query(
-                function(data){
-                    $scope.conferences = data;
-                    $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
-                    $scope.loading.hide();
-                    $scope.updateConference();
-                },
-                function(reason){
-                    console.log(reason);
-                    alert('Unable to retrieve conferences list');
-                    $scope.loading.hide();
-                }
-            )
+            $scope.loading = $ionicLoading.show({
+                content: '<div>Loading conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 200,
+                showDelay: 0
+            });
+
+            $timeout(function(){
+                ConferencesService.getLocalConferences().query(
+                    function(data){
+                        $scope.conferences = data;
+                        $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
+                        $scope.loading.hide();
+                        //$scope.updateConference();
+                    },
+                    function(reason){
+                        console.log(reason);
+                        alert('Unable to retrieve conferences list');
+                        $scope.loading.hide();
+                    }
+                )
+            },2000);
          }
 
        $scope.updateConference = function(){
+
+          /* $scope.loading = $ionicLoading.show({
+               content: '<div>Update conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
+               animation: 'fade-in',
+               showBackdrop: true,
+               maxWidth: 200,
+               showDelay: 0
+           });
+
             ConferencesService.getOnlineConference().query(
                 function(confOnline){
                     console.log('Same confLocal-confOnline : '+ ConferencesService.checkSameConferences($scope.conferences,confOnline));
@@ -41,15 +53,19 @@ angular.module('app')
                         $scope.conferences = confOnline;
                         //TO DO
                         //update local conference with a Online conference
+                        $scope.loading.hide();
                     }else{
+                        $scope.loading.hide();
                         console.log("Conference on device already last update");
                     }
                 },
                 function(reason){
+                    $scope.loading.hide();
+                    alert("no connexion");
                     console.log(reason);
                     return -1;
                 }
-            );
+            );*/
         }
 
         $scope.DisplayConference = function(conference){

@@ -5,7 +5,7 @@
         <title>TechForum Atos Worldline 2014</title>
 
         <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
-        <!--<script src="cordova.js"></script>-->
+        <script src="cordova.js"></script>
 
         <!-- CSS -->
         <link rel="stylesheet" href="libs/ionic/release/css/ionic.css">
@@ -16,10 +16,9 @@
         <!-- JavaScript Angular -->
         <script src="libs/angular-resource/angular-resource.js"></script>
 
-       <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMJC35G40vtF_Bi3T3wbdhB_I2AfBVuwA&sensor=false"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMJC35G40vtF_Bi3T3wbdhB_I2AfBVuwA&sensor=false"></script>
         <script src='libs/underscore/underscore-min.js'></script>
-        <script src='libs/angular-google-maps/dist/angular-google-maps.min.js'></script>-->
-
+        <script src='libs/angular-google-maps/dist/angular-google-maps.min.js'></script>
 
         <!-- ****** JavaScript ****** -->
         <script type='text/javascript' src='cordova.js'></script>
@@ -29,6 +28,7 @@
             <!-- Services -->
         <script src="js/services/ConferencesService.js"></script>
         <script src="js/services/MessagesService.js"></script>
+        <script src="js/services/DateService.js"></script>
 <!--        <script src="js/services/ConnectionService.js"></script>-->
             <!-- Filter -->
         <script src="js/filters/filters.js"></script>
@@ -39,16 +39,9 @@
         <script src="js/controllers/ConferencesController.js"></script>
         <script src="js/controllers/DetailConferenceController.js"></script>
         <script src="js/controllers/AccessController.js"></script>
-
-
-
     </head>
 
     <body ng-app="app" ng-controller="NavController">
-
-<!--        <ion-header-bar class="bar-positive" align-title="center">
-            <h1 class="title">{{titleApp}}</h1>
-        </ion-header-bar>-->
 
         <!-- Tab Navigation Bottom -->
         <ion-nav-bar class="bar-positive">

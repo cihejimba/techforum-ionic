@@ -50,15 +50,15 @@ angular.module('app')
         $scope.getMyposition = function(){
             navigator.geolocation.getCurrentPosition(
                 function(position){
-                    $scope.map.markerYou.latitude = position.coords.latitude;
-                    $scope.map.markerYou.longitude = position.coords.longitude;
-                    $scope.map.center.latitude = position.coords.latitude;
-                    $scope.map.center.longitude = position.coords.longitude;
-
+                    $scope.$apply(function(){
+                        $scope.map.markerYou.latitude = position.coords.latitude;
+                        $scope.map.markerYou.longitude = position.coords.longitude;
+                        $scope.map.center.latitude = position.coords.latitude;
+                        $scope.map.center.longitude = position.coords.longitude;
+                    });
                 },function(error){
                     $scope.positioninfo = error;
                 }
             );
         }
-
     }]);

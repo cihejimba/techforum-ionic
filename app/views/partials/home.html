@@ -2,27 +2,31 @@
 
     <ion-content class="has-header has-tabs" padding="true">
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem, beatae culpa dolores ducimus, ea
-            expedita iure nisi nobis pariatur quae quod sit, unde vel voluptatum! Mollitia non quae ullam!</p>
+        <figure class="logo">
+            <img src="img/techforum-2014.png">
+            <figcaption>Mobile app</figcaption>
+        </figure>
 
-        <p>Adipisci alias aliquam aliquid asperiores aspernatur aut deserunt doloremque error exercitationem, explicabo
-            id iste laborum libero minus nam non odio omnis optio quae quasi quia reiciendis reprehenderit, velit.
-            Natus, quas.</p>
+        <section>
+            <p ng-show="day != 0" class="actual-day">Conference day : {{day}}</p>
+            <p ng-show="day == 0" class="actual-day">
+                Starting TechForum date June 3 and 4, 2014 in Seclin, France.
+                <br/>in {{time.day}} days
+            </p>
+            <br/>
+            <p class="italic center">Next conferences</p>
+        </section>
 
-        <p>Ab assumenda beatae facere inventore iure molestias voluptas. Accusantium corporis impedit iste laboriosam
-            molestiae quaerat quo sed similique velit. Consectetur cumque dolore dolorem ex impedit ipsam nobis quas,
-            quis sapiente.</p>
-
-        <p>Ab accusamus adipisci aliquid asperiores delectus deleniti dolor dolores ea eius enim illum labore molestias
-            non, nulla omnis optio pariatur perspiciatis possimus quae quis quod reiciendis rem repellat sit
-            voluptatibus!</p>
-
-        <p>Accusamus ad alias aliquam architecto consequuntur distinctio dolores doloribus dolorum eaque error expedita
-            harum in molestias natus, nemo nobis, pariatur quasi quisquam quo quod recusandae reiciendis similique
-            tempora totam vel.</p>
-
-        <p>Amet, architecto at atque commodi deserunt distinctio ducimus eius fuga fugiat laborum, molestias nam natus
-            nisi nobis quas quasi quis quisquam rem sed sequi totam ullam, veritatis voluptate. Aspernatur, quos.</p>
+        <ion-list>
+                <div style="margin-top: 0px" class="item item-divider" ng-model="schedule.when.start">Start {{nextSchedule}}</div>
+                <ion-item class="item-home" ng-repeat="conference in conferences  | scheduleByConference:nextSchedule | filter:day | orderBy:'where'" ng-click="viewConference(conference._id)">
+                    <div class ="row">
+                        <p class="col col-20 room-conference">R {{conference.where}}</p>
+                        <p class="col col-80"><strong>{{conference.title}}</strong></p>
+                    </div>
+                </ion-item>
+                <p ng-hide="(conferences  | scheduleByConference:nextSchedule | filter:search).length">No conference at this time</p>
+        </ion-list>
 
     </ion-content>
 

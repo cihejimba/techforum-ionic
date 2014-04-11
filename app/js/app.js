@@ -1,9 +1,15 @@
-/*document.addEventListener("deviceready", function(){
+document.addEventListener("deviceready", function(){
     console.log("Launch App techForum - deviceReady");
     navigator.splashscreen.hide();
-}, false);*/
+    navigator.globalization.dateToString(
+        new Date(),
+        function (date) { alert('date: ' + date.value + '\n'); },
+        function () { alert('Error getting dateString\n'); },
+        { formatLength: 'short', selector: 'date and time' }
+    );
+}, false);
 
-var app = angular.module('app', ['ionic','ngResource','techForum.filters'/*,'google-maps'*/])
+var app = angular.module('app', ['ionic','ngResource','techForum.filters','google-maps'])
 
 app.config(function($stateProvider, $urlRouterProvider) {
         $stateProvider

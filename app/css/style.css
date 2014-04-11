@@ -1,6 +1,25 @@
 /*****************************\
+*          Home               *
+\*****************************/
+.logo{
+    margin-top: 20px;
+    text-align: center;
+}
+.actual-day{
+    margin-top: 10px;
+    text-align: center;
+    font-weight:bold;
+}
+.item-home{
+    height: 70px;
+}
+
+/*****************************\
 *      Conference List        *
 \*****************************/
+.reload-conference{
+    font-size: 30px;
+}
 .item{
     margin-bottom: 10px;
 }
@@ -10,6 +29,7 @@
 .nbConference{
     font-style: italic;
     margin-right: 10px;
+    text-align: center;
 }
 .activeDay{
     background-color: #e5e5e5;
@@ -92,6 +112,13 @@ p.room-detail-conference{
 *          Conference         *
 \*****************************/
 
+input.field-comment{
+    width: 150px;
+    border : 1px solid #e5e5e5;
+}
+.last-field-comment{
+    margin-bottom: 5px;
+}
 .title-comments{
     font-style: italic;
     margin-top: 10px;

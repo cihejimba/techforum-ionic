@@ -1,10 +1,11 @@
 angular.module('app')
-    .controller('DetailConferenceController', ['$scope','$stateParams','ConferencesService','MessagesService','$ionicNavBarDelegate','$ionicLoading','$resource', function($scope,$stateParams,ConferencesService,MessagesService,$ionicNavBarDelegate,$ionicLoading,$resource)
+    .controller('DetailConferenceController', ['$scope','$stateParams','ConferencesService','MessagesService','$ionicNavBarDelegate','$ionicLoading','$resource','$state', function($scope,$stateParams,ConferencesService,MessagesService,$ionicNavBarDelegate,$ionicLoading,$resource,$state)
     {
         console.log('--- DetailConferenceController ---');
         var idConference = $stateParams.conferenceId;
         $scope.comments = [];
         $scope.loadingComment = "loading...";
+
         $scope.showHideComment = 'show';
 
         $scope.displayDescription = function(){
@@ -45,6 +46,7 @@ angular.module('app')
         }
 
         $scope.backConferences =function(){
-            $ionicNavBarDelegate.back();
+            $state.go('tab.conferences');
+            //$ionicNavBarDelegate.back();
         }
     }]);

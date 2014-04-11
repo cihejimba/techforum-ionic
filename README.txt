@@ -54,11 +54,15 @@ Plugin SplashScreen
 cordova plugin add org.apache.cordova.splashscreen
 Plugin Geolocalisation
 cordova plugin add org.apache.cordova.geolocation
+Plugin globalization
+cordova plugin add org.apache.cordova.globalization
 
 Si vous rencontré des problémes pour récupérer les plugins
 download the git of the plugin using the zip download of git site
 https://github.com/apache/cordova-plugin-splashscreen
 https://github.com/apache/cordova-plugin-geolocation
+https://github.com/apache/cordova-plugin-globalization
+
 extract the zip to some path
 run cordova plugin add pathtotheextractedplugingit
 

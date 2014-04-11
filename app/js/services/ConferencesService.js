@@ -2,6 +2,7 @@ app.factory('ConferencesService', ['$resource', function($resource) {
 
     var confFactory = {
         conferencesResource : [],
+        scheduleConference : [],
 
         getOnlineConference : function (){
             confFactory.conferencesResource =  $resource('http://techforum-worldline.rhcloud.com//conferences/:id',{id:'@id'});
@@ -12,15 +13,19 @@ app.factory('ConferencesService', ['$resource', function($resource) {
             return confFactory.conferencesResource;
         },
         sortConferenceByStart : function(pConference){
-            var tab =[]
+            var tab =[];
             angular.forEach(pConference, function(value, key){
                 if(tab.indexOf(value.when.start) == -1)
                     tab.push(value.when.start);
             });
-            return tab.sort();
+            confFactory.scheduleConference = tab.sort();
+            return confFactory.scheduleConference;
         },
         checkSameConferences : function(pConference1,pConference2){
             return angular.equals(pConference1,pConference2);
+        },
+        getScheduleConference : function(){
+          return confFactory.scheduleConference;
         },
         updateConferenceLocal : function(pConferenceOnline){
 

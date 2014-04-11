@@ -1,4 +1,7 @@
-<ion-view title="Conferences" ng-init="getAllConf()">
+<ion-view title="Conferences" right-buttons="rightButtons" ng-init="getAllConf()">
+    <ion-nav-buttons side="right">
+        <button class="button-clear icon ion-refresh reload-conference" ng-click="updateConference()"></button>
+    </ion-nav-buttons>
     <section class="bar bar-subheader item-input-inset no-border">
         <div class="button-bar" ng-init="search.day = 1">
 <!--           <a class="button" ng-click="search.day = $; numButton = 0" ng-class="{activeDay :numButton == 0}">All Day</a>-->
@@ -7,12 +10,7 @@
         </div>
     </section>
     <section class="bar bar-subheader item-input-inset">
-        <p class="nbConference col">{{(conferences |filter:search).length}} conferences in day {{search.day}}</p>
-        <label class="checkbox">
-            <input type="checkbox" ng-model="sortByRooms">
-        </label>
-
-        Sort by time slot
+        <p class="nbConference">{{(conferences |filter:search).length}} conferences in day {{search.day}}</p>
     </section>
 
     <ion-content class="has-subheader has-tabs" padding="true">
@@ -45,7 +43,16 @@
             </div>
         </ion-list>
 
-        <!--All view-->
+    </ion-content>
+</ion-view>
+
+<!--
+<label class="checkbox">
+<input type="checkbox" ng-model="sortByRooms">
+</label>
+
+Sort by time slot
+
         <ion-list ng-show="!sortByRooms">
             <ion-item class="item" ng-repeat="conference in conferences |filter:search | orderBy:'when.start'" ng-click="viewConference(conference._id)">
                 <div class="row">
@@ -64,8 +71,7 @@
             </ion-item>
         </ion-list>
 
-    </ion-content>
-</ion-view>
+-->
 
 
 
