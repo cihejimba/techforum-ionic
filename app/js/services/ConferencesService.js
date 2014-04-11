@@ -27,15 +27,27 @@ app.factory('ConferencesService', ['$resource', function($resource) {
         getScheduleConference : function(){
           return confFactory.scheduleConference;
         },
+        setConferencesResource : function(conferences){
+            confFactory.conferencesResource = conferences;
+        },
+        getConferencesResource : function(){
+            return confFactory.conferencesResource;
+        },
         updateConferenceLocal : function(pConferenceOnline){
 
         },
-        saveLocalStorage : function(data){
-             if(localStorage){
-
-             }else{
-                alert('Vos données ne peuvent être sauvegardé en local');
-             }
+        conferenceResourceIsEmpty : function(){
+            confFactory.getConferencesResource().query(
+                function(data){
+                    console.log("ya des data");
+                    if(data == null)
+                        return true;
+                    else
+                        return false;
+                },function(reason){
+                    return true;
+                }
+            );
          }
     };
 

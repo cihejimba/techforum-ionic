@@ -19,20 +19,20 @@ angular.module('app')
             });
 
             $timeout(function(){
-                ConferencesService.getLocalConferences().query(
-                    function(data){
-                        $scope.conferences = data;
-                        $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
-                        $scope.loading.hide();
-                        //$scope.updateConference();
-                    },
-                    function(reason){
-                        console.log(reason);
-                        alert('Unable to retrieve conferences list');
-                        $scope.loading.hide();
-                    }
-                )
-            },2000);
+                    ConferencesService.getConferencesResource().query(
+                        function(data){
+                            $scope.conferences = data;
+                            $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
+                            $scope.loading.hide();
+                            //$scope.updateConference();
+                        },
+                        function(reason){
+                            console.log(reason);
+                            alert('Unable to retrieve conferences list');
+                            $scope.loading.hide();
+                        }
+                    );
+            },1000);
          }
 
        $scope.updateConference = function(){
@@ -51,8 +51,11 @@ angular.module('app')
                     if(!ConferencesService.checkSameConferences($scope.conferences,confOnline)){
                         console.log("Update conference on device");
                         $scope.conferences = confOnline;
+                        ConferencesService
                         //TO DO
                         //update local conference with a Online conference
+                        //OR
+                        ConferencesService.setConferencesResource(confOnline);
                         $scope.loading.hide();
                     }else{
                         $scope.loading.hide();

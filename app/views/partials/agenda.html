@@ -1,7 +1,20 @@
 <ion-view title="Agenda">
     <ion-content class="has-header has-tabs" padding="true">
 
-        <p>Agenda</p>
+
+        <p  class="italic" ng-show="!myAgenda.length">You don't have conference in your agenda</p>
+
+        <ion-list>
+        <div class="schedule-tab" ng-repeat="itemSchedule in mySchedule">
+            <p ng-model="schedule.when.start">Start {{itemSchedule}}</p>
+            <ion-item ng-repeat="conferenceAgenda in myAgenda | scheduleByConference:itemSchedule" >
+                <div class="row">
+                    <p class="col">{{conferenceAgenda.title}}</p>
+                </div>
+            </ion-item>
+
+        </diV>
+         </ion-list>
 
     </ion-content>
 </ion-view>

@@ -20,6 +20,7 @@ angular.module('app')
         }else
             $scope.day = 0;
 
+        //first and only call to getLocalConferences -it's to retreive a conference.json - after use getConferencesResource
         ConferencesService.getLocalConferences().query(
             function(data){
                 $scope.conferences = data;
@@ -28,7 +29,7 @@ angular.module('app')
             },
             function(reason){
             }
-        )
+        );
         $scope.viewConference = function(idConference){
             $state.go('tab.conference-detail',{conferenceId: idConference})
         }
