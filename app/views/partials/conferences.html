@@ -4,7 +4,6 @@
     </ion-nav-buttons>
     <section class="bar bar-subheader item-input-inset no-border">
         <div class="button-bar" ng-init="search.day = 1">
-<!--           <a class="button" ng-click="search.day = $; numButton = 0" ng-class="{activeDay :numButton == 0}">All Day</a>-->
             <a class="button" ng-click="search.day = 1; numButton = 1" ng-class="{activeDay :numButton == 1}">Day 1</a>
             <a class="button" ng-click="search.day = 2; numButton = 2" ng-class="{activeDay :numButton == 2}">Day 2</a>
         </div>
@@ -17,9 +16,10 @@
         <br/>
         <!--Sort by Room-->
         <ion-list ng-show="sortByRooms" >
-            <div class="schedule-tab" ng-repeat="itemSchedule in scheduleconferences">
+
+            <div class="schedule-tab" ng-repeat="itemSchedule in scheduleconferences" ng-show="(conferences  | scheduleByConference:itemSchedule:search.day).length">
                 <p ng-model="schedule.when.start">Start {{itemSchedule}}</p>
-                 <ion-item ng-repeat="conference in conferences  | scheduleByConference:itemSchedule | filter:search | orderBy:'where'" ng-click="DisplayConference(conference)">
+                 <ion-item  ng-repeat="conference in conferences  | scheduleByConference:itemSchedule:search.day | orderBy:'where'" ng-click="DisplayConference(conference)">
                     <div ng-class="{activeConference: conference._id==selectedConferenceId}">
                         <div class ="row">
                             <p class="col col-20 room-conference">R {{conference.where}}</p>
@@ -39,7 +39,6 @@
                         </div>
                     </div>
                  </ion-item>
-                <p ng-hide="(conferences  | scheduleByConference:itemSchedule | filter:search).length">No conference for this time</p>
             </div>
         </ion-list>
 

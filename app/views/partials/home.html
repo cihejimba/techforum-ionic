@@ -8,24 +8,29 @@
         </figure>
 
         <section>
-            <p ng-show="day != 0" class="actual-day">Conference day : {{day}}</p>
-            <p ng-show="day == 0" class="actual-day">
+            <p ng-show="current_day.day != 0" class="actual-day">Conference day : {{current_day.day}}</p>
+            <p ng-show="current_day.day == 0" class="actual-day">
                 Starting TechForum date June 3 and 4, 2014 in Seclin, France.
-                <br/>in {{time.day}} days
+                <br/>
+                    <span ng-hide="time.day == 0">in {{time.day}} days</span>
+                    <span ng-show="time.day == 0">Tomorrow</span>
             </p>
             <br/>
-            <p class="italic center">Next conferences</p>
         </section>
 
+        <p class="italic center">Next conferences</p>
         <ion-list>
-                <div style="margin-top: 0px" class="item item-divider" ng-model="schedule.when.start">Start {{nextSchedule}}</div>
-                <ion-item class="item-home" ng-repeat="conference in conferences  | scheduleByConference:nextSchedule | filter:day | orderBy:'where'" ng-click="viewConference(conference._id)">
+                <div style="margin-top: 0px" class="item item-divider" ng-model="schedule.when.start">
+                    Start
+                    <span ng-show="current_day.day != 0">{{nextSchedule}}</span>
+                    <span ng-show="current_day.day == 0">June 3</span>
+                </div>
+                <ion-item class="item-home" ng-repeat="conference in conferences  | scheduleByConference:nextSchedule:current_day.day | orderBy:'where'" ng-click="viewConference(conference._id)">
                     <div class ="row">
                         <p class="col col-20 room-conference">R {{conference.where}}</p>
                         <p class="col col-80"><strong>{{conference.title}}</strong></p>
                     </div>
                 </ion-item>
-                <p ng-hide="(conferences  | scheduleByConference:nextSchedule | filter:search).length">No conference at this time</p>
         </ion-list>
 
     </ion-content>

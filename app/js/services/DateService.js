@@ -31,24 +31,24 @@ app.factory('DateService', function() {
             //la date la plus ancien pour avoir un grand timestamps
             var res = new Date(2014,5,5)-date;
             tab.sort();
-            console.log("date : "+date);
-            console.log(tab);
-            console.log("res : "+res);
-            console.log("Debut for");
+          //  console.log("date : "+date);
+          //  console.log(tab);
+           // console.log("res : "+res);
+           // console.log("Debut for");
             for(i = 0; i < tab.length;i++){
                 console.log("-------------- Tab["+i+"] : "+tab[i]+" -----------------");
                 heure = tab[i].substring(0,2);
                 minute = tab[i].substring(3,5);
-                console.log("heure : "+heure);
-                console.log("minute : "+minute);
+                   console.log("heure : "+heure);
+                   console.log("minute : "+minute);
                 var d = new Date(date.getFullYear(),date.getMonth(),date.getDate(),heure,minute);
                 console.log("d = "+d);
                 if(date < d){
-                    console.log('YES date < d : '+date +" < "+d);
+                      console.log('YES date < d : '+date +" < "+d);
                     if(d-date<res) {
-                        console.log('YES d-date<res : '+d+"-"+date+"<"+res);
+                         console.log('YES d-date<res : '+d+"-"+date+"<"+res);
                         res = tab[i];
-                        console.log(" ******* res = tab[i]"+res+ "="+ tab[i])
+                          console.log(" ******* res = tab[i]"+res+ "="+ tab[i])
                         return res;
                     }else{
                         console.log('NO d-date<res : '+d+"-"+date+"<"+res);
@@ -56,6 +56,7 @@ app.factory('DateService', function() {
                 }else
                     console.log(' NO date < d : '+date +" < "+d);
             }
+
         }
     };
     return dateFactory;

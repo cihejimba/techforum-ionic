@@ -21,6 +21,21 @@ app.factory('ConferencesService', ['$resource', function($resource) {
             confFactory.scheduleConference = tab.sort();
             return confFactory.scheduleConference;
         },
+        sortConferenceByStartByDay : function(pConference,day){
+            var tab =[];
+            if(day == 0){
+                tab = [];
+            }else{
+                angular.forEach(pConference, function(value, key){
+                    if(tab.indexOf(value.when.start) == -1 && value.day == day){
+                        tab.push(value.when.start);
+                    }
+                });
+            }
+            confFactory.scheduleConference = tab.sort();
+            console.log(confFactory.scheduleConference);
+            return confFactory.scheduleConference;
+        },
         checkSameConferences : function(pConference1,pConference2){
             return angular.equals(pConference1,pConference2);
         },

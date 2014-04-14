@@ -8,23 +8,26 @@ angular.module('app')
         var today = new Date();
         var todayShort = new Date(today.getFullYear(),today.getMonth(),today.getDate());
 
-        $scope.day = 0;
+        $scope.current_day = {
+            day : 2
+        };
         $scope.scheduleConferences = [];
         $scope.nextSchedule = null;
+
         $scope.time = DateService.dateDiff(today,day1);
 
         if(DateService.compare(day1,todayShort) == 0 ){
-            $scope.day = 1;
+            $scope.current_day.day = 1;
         }else if(DateService.compare(day2,todayShort) == 0 ){
-            $scope.day = 2;
+            $scope.current_day.day = 2;
         }else
-            $scope.day = 0;
+            $scope.current_day.day = 0;
 
         //first and only call to getLocalConferences -it's to retreive a conference.json - after use getConferencesResource
         ConferencesService.getLocalConferences().query(
             function(data){
                 $scope.conferences = data;
-                $scope.scheduleConferences = ConferencesService.sortConferenceByStart(data);
+                $scope.scheduleConferences = ConferencesService.sortConferenceByStartByDay(data,$scope.current_day.day);
                 $scope.nextSchedule = DateService.nextSchedule($scope.scheduleConferences,today);
             },
             function(reason){
