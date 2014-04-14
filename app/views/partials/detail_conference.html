@@ -22,7 +22,7 @@
                 <p class="col ion-calendar"> Day : <span class="italic">{{conference.day}}</span></p>
             </div>
             <div class="row">
-                <p class="col ion-clock"> Schedule : <span class="italic">{{conference.when.start}} - {{conference.when.end}}<span class="italic"></p>
+                <p class="col ion-clock"> Schedule : <span class="italic">{{conference.when.start}} - {{conference.when.end}}</span></p>
             </div>
             <div class="row">
                 <p class="col-33 col-center ion-compose"> Description</p>
@@ -49,9 +49,9 @@
         <section>
             <fieldset>
                 <legend>Post a comment</legend>
-                Name : <input class="field-comment" type="text" ng-model="newComment.name" placeholder="name"/>
-                Content : <input class="field-comment last-field-comment" type="text" ng-model="newComment.msg" placeholder="msg"/>
-                <button class="button" ng-click="getComments()">Send comment</button><br/>
+                Name : <input class="field-comment" type="text" ng-model="newComment.name" placeholder=" name"/>
+                Content : <input class="field-comment last-field-comment" type="text" ng-model="newComment.msg" placeholder=" msg"/>
+                <button class="button" ng-click="postComment(conference._id)">Send comment</button><br/>
             </fieldset>
         </section>
 
@@ -59,12 +59,13 @@
             <p class="title-comments">Comments</p>
             <p ng-hide="comments.length">No comments for this conferences {{loadingComment}}</p>
             <ion-list >
-                <ion-item class="comment-item" ng-repeat="comment in comments |date:comment.date">
+                <tr>
+                <ion-item class="comment-item" ng-repeat="comment in comments | orderBy:'date':true">
                     <div class="row">
                         <p class="col"><strong>Name : {{comment.name}}</strong></p>
                     </div>
                     <div class="row">
-                        <p class="col italic">Date : {{comment.date |date : "MMM d, y h:mm:ss a"}}</p>
+                        <p class="col italic">Date : {{comment.date | date : "MMM d, y h:mm:ss a"}}</p>
                     </div>
                     <div class="row">
                         <p class="col">{{comment.msg}}</p>

@@ -18,26 +18,36 @@ angular.module('app')
                 showDelay: 0
             });
 
-            $timeout(function(){
+            $timeout(function () {
+                if (localStorage.getItem('conferences') == null) {
+                    console.log("localStorage.getItem('conferences') == null");
                     ConferencesService.getConferencesResource().query(
-                        function(data){
+                        function (data) {
                             $scope.conferences = data;
                             $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
+                            localStorage.setItem('conferences', JSON.stringify(data));
                             $scope.loading.hide();
-                            //$scope.updateConference();
                         },
-                        function(reason){
+                        function (reason) {
                             console.log(reason);
                             alert('Unable to retrieve conferences list');
                             $scope.loading.hide();
                         }
                     );
-            },1000);
+
+                } else {
+                    console.log("localStorage.getItem('conferences') != null");
+                    $scope.conferences = JSON.parse(localStorage.getItem('conferences'));
+                    $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
+                    $scope.loading.hide();
+                }
+            }, 1000);
+
          }
 
        $scope.updateConference = function(){
 
-          /* $scope.loading = $ionicLoading.show({
+           $scope.loading = $ionicLoading.show({
                content: '<div>Update conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
                animation: 'fade-in',
                showBackdrop: true,
@@ -51,11 +61,8 @@ angular.module('app')
                     if(!ConferencesService.checkSameConferences($scope.conferences,confOnline)){
                         console.log("Update conference on device");
                         $scope.conferences = confOnline;
-                        ConferencesService
-                        //TO DO
-                        //update local conference with a Online conference
-                        //OR
                         ConferencesService.setConferencesResource(confOnline);
+                        localStorage.setItem('conferences', JSON.stringify(confOnline));
                         $scope.loading.hide();
                     }else{
                         $scope.loading.hide();
@@ -68,7 +75,7 @@ angular.module('app')
                     console.log(reason);
                     return -1;
                 }
-            );*/
+            );
         }
 
         $scope.DisplayConference = function(conference){

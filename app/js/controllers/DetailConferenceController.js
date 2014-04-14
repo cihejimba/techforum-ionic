@@ -8,6 +8,11 @@ angular.module('app')
         $scope.comments = [];
         $scope.loadingComment = "loading...";
         $scope.showHideComment = 'show';
+        $scope.newComment = {
+            name : null,
+            msg : null
+        }
+
 
         $scope.displayDescription = function(){
             if($scope.showHideComment == 'show'){
@@ -21,7 +26,7 @@ angular.module('app')
                 conferences = data;
                 angular.forEach(data,function(conference , key) {
                     if (conference._id == idConference) {
-                        $scope.getComments();
+                        getComments();
                         return $scope.conference = conference;
                     }
                 });
@@ -31,10 +36,32 @@ angular.module('app')
             });
         }
 
-        $scope.addComment = function(){
+        $scope.postComment = function(idConference){
+
+            var commentR = MessagesService.getOnlineMsgComment();
+            comment = new commentR();
+            comment.name = $scope.newComment.name,
+            comment.msg = $scope.newComment.msg,
+            comment.type = "comment",
+            comment.date = new Date(),
+            comment.idConference = idConference
+
+            comment.$save(
+                function(data, getResponseHeadersSuccess){
+                    alert("Your comment has been sent correctly.")
+                    getComments();
+                },
+                function(data,getResponseHeadersError){
+                    console.log("Impossible to send your comment");
+                }
+            );
+
+            $scope.newComment.name = null;
+            $scope.newComment.msg = null;
+
         }
 
-        $scope.getComments = function(){
+        var getComments = function(){
             MessagesService.getOnlineMsgCommentByIdConference(idConference).query(
                 function(data){
                     console.log(data);

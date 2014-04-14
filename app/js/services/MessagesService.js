@@ -9,7 +9,7 @@ app.factory('MessagesService', ['$resource', function($resource) {
             return $resource(lien);
         },
         getOnlineMsgComment : function (){
-            msgFactory.commentResource = $resource('http://techforum-worldline.rhcloud.com//messages/comments/');
+            msgFactory.commentResource = $resource('http://techforum-worldline.rhcloud.com//messages/comments/',{id:'@id'});
             return msgFactory.commentResource;
         }
     };

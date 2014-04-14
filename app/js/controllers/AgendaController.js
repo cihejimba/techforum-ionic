@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('AgendaController', ['$scope','ConferencesService','$state', function($scope,ConferencesService,$state)
+    .controller('AgendaController', ['$scope','ConferencesService','$state','$timeout', function($scope,ConferencesService,$state,$timeout)
     {
         console.log('--- AgendaController ---');
 
@@ -36,22 +36,26 @@ angular.module('app')
             $state.go('tab.conference-detail',{conferenceId: idConference})
         }
 
-        $scope.onItemDelete = function(idConferenceToDelete){
-            alert("Delete "+idConferenceToDelete);
-            if(localStorage.getItem('myAgenda') != null){
-                agenda = JSON.parse(localStorage.getItem('myAgenda'));
-                console.log("A chercher : "+idConferenceToDelete);
-                console.log(agenda);
-                console.log(agenda.indexOf(idConferenceToDelete+""));
-                var itemAgenda = agenda.indexOf(idConferenceToDelete+"");
-                if(itemAgenda != -1){
-                    agenda.splice(itemAgenda,1);
-                    localStorage.setItem('myAgenda',JSON.stringify(agenda));
-                }
-                console.log("aprés suppression");
-                console.log(agenda);
-            }else
-                alert("Error - please can reload application");
-        }
+        $scope.onItemDelete = function(idConferenceToDelete) {
 
+            if (confirm("Do you want delete this conference on your agenda ?")) {
+                if (localStorage.getItem('myAgenda') != null) {
+                    agenda = JSON.parse(localStorage.getItem('myAgenda'));
+
+                    var itemAgenda = agenda.indexOf(idConferenceToDelete + "");
+                    if (itemAgenda != -1) {
+                        agenda.splice(itemAgenda, 1);
+                        localStorage.setItem('myAgenda', JSON.stringify(agenda));
+                    }
+
+                    for (i = 0; i < $scope.myAgenda.length; i++) {
+                        console.log($scope.myAgenda[i]);
+                        if ($scope.myAgenda[i]._id == idConferenceToDelete)
+                            $scope.myAgenda.splice(i, 1);
+                    }
+                } else
+                    alert("Error - please can reload application");
+            }else
+                console.log("non confirmé");
+        }
     }]);

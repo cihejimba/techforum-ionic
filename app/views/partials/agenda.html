@@ -28,12 +28,14 @@
 
             <div class="schedule-tab" ng-repeat="itemSchedule in mySchedule1">
                 <p ng-model="schedule.when.start">Start {{itemSchedule}}</p>
-                <ion-item ng-repeat="conferenceAgenda in myAgenda | scheduleByConference:itemSchedule:day.day1" ng-click="viewConference(conferenceAgenda._id)">
+                <ion-item ng-repeat="conferenceAgenda in myAgenda | scheduleByConference:itemSchedule:day.day1" ng-click="viewConference(conferenceAgenda._id)" >
                     <div class ="row">
                         <p class="col col-20 room-conference">R {{conferenceAgenda.where}}</p>
                         <p class="col col-80"><strong>{{conferenceAgenda.title}}</strong></p>
                     </div>
-                    <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id)">Delete</ion-delete-button>
+                    <div class="row">
+                        <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id)">Delete</ion-delete-button>
+                    </div>
                 </ion-item>
                 <p ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day1).length">You don't have a conference for this time</p>
             </diV>
