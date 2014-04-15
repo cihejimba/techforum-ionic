@@ -30,6 +30,11 @@ Install a follow components
 npm install -g cordova
 ```
 
+### Bower
+```bash
+npm install -g bower
+```
+
 then run:
 
 ```bash
