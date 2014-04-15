@@ -29,7 +29,6 @@ Install a follow components
 ```bash
 npm install -g cordova
 ```
-
 ### Bower
 ```bash
 npm install -g bower
@@ -47,7 +46,14 @@ $ cordova plugin add org.apache.cordova.splashscreen
 $ cordova plugin add org.apache.cordova.geolocation
 $ cordova build android
 ```
-To launch a emulator
+
+Add Splascreen and Icon
+
+```bash
+$  cp -r www/res/android/res platforms/android/
+```
+
+To launch a emulator (you must have Android ADB and a AVD (Android virtual Device)
 ```bash
 $ cordova emulate android
 ```
@@ -65,7 +71,8 @@ Download the git of the plugin using the zip download of git site
 
 Extract the zip to some path
 ```bash
-run cordova plugin add pathtotheextractedplugingit
+cordova plugin add [pathtotheextractedplugingit]cordova-plugin-geolocation-master
+cordova plugin add [pathtotheextractedplugingit]cordova-plugin-splashscreen-master
 ```
 
 ## To test in local 
