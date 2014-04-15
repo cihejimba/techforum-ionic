@@ -1,5 +1,15 @@
 #Cordova
+#Android Directory with splashscreen and icon 
+!platforms/android/res/drawable/^.*
+!platforms/android/res/drawable-hdpi/^.*
+!platforms/android/res/drawable-ldpi/^.*
+!platforms/android/res/drawable-mdpi/^.*
+!platforms/android/res/drawable-xhdpi/^.*
+!platforms/android/res/drawable-xxhdpi/^.*
+!platforms/android/res/drawable-xxxhdpi/^.*
+
 platforms/^.*
+plugins/^.*
 
 .idea
 
