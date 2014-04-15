@@ -1,0 +1,40 @@
+<ion-view title="TechForum 2014">
+
+    <ion-content class="has-header has-tabs" padding="true">
+
+        <figure class="logo">
+            <img src="img/techforum-2014.png">
+            <figcaption>Mobile app</figcaption>
+        </figure>
+
+        <!-- INDICATION OF DAY NUMBER -->
+        <section>
+            <p ng-show="current_day.day != 0" class="actual-day">Conference day : {{current_day.day}}</p>
+            <p ng-show="current_day.day == 0" class="actual-day">
+                Starting TechForum date June 3 and 4, 2014 in Seclin, France.
+                <br/>
+                    <span ng-hide="time.day == 0">in {{time.day}} days</span>
+                    <span ng-show="time.day == 0">Tomorrow</span>
+            </p>
+            <br/>
+        </section>
+
+        <!-- VIEW NEXT CONFERENCE  -->
+        <p class="italic center">Next conferences</p>
+        <ion-list>
+                <div style="margin-top: 0px" class="item item-divider" ng-model="schedule.when.start">
+                    Start
+                    <span ng-show="current_day.day != 0">{{nextSchedule}}</span>
+                    <span ng-show="current_day.day == 0">June 3</span>
+                </div>
+                <ion-item class="item-home" ng-repeat="conference in conferences  | scheduleByConference:nextSchedule:current_day.day | orderBy:'where'" ng-click="viewConference(conference._id)">
+                    <div class ="row">
+                        <p class="col col-20 room-conference">R {{conference.where}}</p>
+                        <p class="col col-80"><strong>{{conference.title}}</strong></p>
+                    </div>
+                </ion-item>
+        </ion-list>
+
+    </ion-content>
+
+</ion-view>

@@ -1,6 +1,11 @@
-#Node
-node_modules
+#Cordova
+platforms/^.*
 
-#bower
-app/libs
+.idea
+
+#Node
+www/node_modules
+
+#Bower
+www/app/libs
 

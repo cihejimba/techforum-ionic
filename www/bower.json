@@ -1,0 +1,27 @@
+{
+  "name": "TechForum2014",
+  "version": "0.0.1",
+  "description": "Mobile Application for Worldline TechForum 2014",
+  "keywords": [
+    "TechForum",
+    "Worldline",
+    "Atos"
+  ],
+  "authors": [
+    "Maxime Gens"
+  ],
+  "license": "Atos Worldline",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-resource": "~1.2.15",
+    "ionic": "master",
+    "angular-google-maps": "~1.0.17"
+  }
+}
