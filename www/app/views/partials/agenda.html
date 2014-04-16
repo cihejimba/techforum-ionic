@@ -9,21 +9,21 @@
         <ion-list show-delete="true">
 
             <div class="schedule-tab">
-                <p>Start 13:00 - 13:30</p>
+                <p>Start 08:00 - 09:00</p>
                 <div class="event-conference">
-                    <span>Welcome coffee</span>
+                    <span>Welcome coffee + Intro</span>
                 </div>
             </div>
             <div class="schedule-tab">
-            <p>Start 13:00 - 14:00</p>
+            <p>Start 09:00 - 09:45</p>
+                <div class="event-conference">
+                    <span>Teaser 1</span>
+                </div>
+            </div>
+            <div class="schedule-tab">
+                <p>Start 09:45 - 11:00</p>
                 <div class="event-conference">
                     <span>Key notes</span>
-                </div>
-            </div>
-            <div class="schedule-tab">
-                <p>Start 14:00 - 15:15</p>
-                <div class="event-conference">
-                    <span>Teasing session : 2 minutes to convince</span>
                 </div>
             </div>
 
@@ -36,22 +36,31 @@
                         <p class="col col-80"><strong>{{conferenceAgenda.title}}</strong></p>
                     </div>
                     <div class="row">
-                        <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id)">Delete</ion-delete-button>
+                        <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id);$event.stopPropagation()">Delete</ion-delete-button>
                     </div>
                 </ion-item>
-                <p ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day1).length">You don't have a conference for this time</p>
-            </diV>
+                <div class="row" ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day1).length">
+                    <p class="col">You don't have a conference</p>
+                    <button class="col" ng-click="viewConferenceWithTime(day.day1,itemSchedule);$event.stopPropagation()">Add conference</button>
+                </div>
+            </div>
 
             <div class="schedule-tab">
-                <p>Start 18:15 - 19:00</p>
+                <p>Start 18:30 - 19:30</p>
                 <div class="event-conference">
-                    <span>Special event : Scala/Akka</span>
+                    <span>Apero</span>
                 </div>
             </div>
             <div class="schedule-tab">
-                <p>Evening</p>
+                <p>Start 19:30 - 21:00</p>
                 <div class="event-conference">
-                    <span>Barbecue party + Acanthurus Concert</span>
+                    <span>Barbecue party</span>
+                </div>
+            </div>
+            <div class="schedule-tab">
+                <p>Start 21:00 - 22:00</p>
+                <div class="event-conference">
+                    <span>Concert</span>
                 </div>
             </div>
 
@@ -62,9 +71,23 @@
             <p class="center"><strong>Day 2</strong></p>
 
             <div class="schedule-tab">
-                <p>Start 08:30 - 09:00</p>
+                <p>Start 08:00 - 08:30</p>
                 <div class="event-conference">
                     <span>Welcome coffee</span>
+                </div>
+            </div>
+
+            <div class="schedule-tab">
+                <p>Start 08:30 - 09:45</p>
+                <div class="event-conference">
+                    <span>Key Notes</span>
+                </div>
+            </div>
+
+            <div class="schedule-tab">
+                <p>Start 09:45 - 10:30</p>
+                <div class="event-conference">
+                    <span>Key Notes</span>
                 </div>
             </div>
 
@@ -78,13 +101,16 @@
                     </div>
                     <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id)">Delete</ion-delete-button>
                 </ion-item>
-                <p ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day1).length">You don't have a conference for this time</p>
+                <div class="row" ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day2).length">
+                    <p class="col">You don't have a conference</p>
+                    <button class="col" ng-click="viewConferenceWithTime(day.day2,itemSchedule)">Add conference</button>
+                </div>
             </div>
 
             <div class="schedule-tab">
-                <p>Start 15:45 - 16:15</p>
+                <p>Start 16:15 - 16:30</p>
                 <div class="event-conference">
-                    <span>End of conference</span>
+                    <span>Conclusion + End of conference</span>
                 </div>
             </div>
 

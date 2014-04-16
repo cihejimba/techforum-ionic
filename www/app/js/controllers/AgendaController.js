@@ -15,6 +15,25 @@ angular.module('app')
             day2 : 2
         };
 
+        var getSchedule = function(conferences){
+            $scope.mySchedule1 = ConferencesService.sortConferenceByStartByDay(conferences,$scope.day.day1);
+            $scope.mySchedule2 = ConferencesService.sortConferenceByStartByDay(conferences,$scope.day.day2);
+        }
+
+        /** Retrieve schedule conference **/
+        if (localStorage.getItem('conferences') != null){
+            var conferences = JSON.parse(localStorage.getItem('conferences'));
+            getSchedule(conferences);
+        }else{
+            ConferencesService.getConferencesResource().query(
+                function (data) {
+                    localStorage.setItem('conferences', JSON.stringify(data));
+                    getSchedule(data);
+                }
+            );
+        }
+
+
         /** Retreive conference in agenda with localStorage and convert conference with resource conference **/
         if(localStorage.getItem('myAgenda') != null) {
             agenda = JSON.parse(localStorage.getItem('myAgenda'));
@@ -39,6 +58,11 @@ angular.module('app')
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
             $state.go('tab.conference-detail',{conferenceId: idConference})
+        }
+
+        /** View conference for time in agenda **/
+        $scope.viewConferenceWithTime = function(day,schedule){
+            $state.go('tab.agenda-conference-schedule',{day: day,schedule:schedule});
         }
 
         /** Delete a conference in agenda **/

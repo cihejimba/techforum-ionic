@@ -82,7 +82,8 @@ angular.module('app')
 
         /** Return to conference list **/
         $scope.backConferences =function(){
-            $state.go('tab.conferences');
+            //$state.go('tab.conferences');
+            $ionicNavBarDelegate.back();
         }
 
         /** Add a conference in agenda **/

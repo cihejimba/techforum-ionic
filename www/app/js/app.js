@@ -14,6 +14,7 @@ document.addEventListener("deviceready", function(){
 
 ionic.Platform.ready(function(){
     console.log("App - Cordova is ready, let's do this!");
+
 });
 
 /**
@@ -64,6 +65,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     'conferences-tab': {
                         templateUrl: 'views/partials/detail_conference.html',
                         controller: 'DetailConferenceController'
+                    }
+                }
+            })
+            .state('tab.agenda-conference-schedule', {
+                url: '/agenda/conferences/:day/:schedule',
+                views: {
+                    'agenda-tab': {
+                        templateUrl: 'views/partials/conference_by_schedule.html',
+                        controller: 'ConferencesByScheduleController'
                     }
                 }
             })

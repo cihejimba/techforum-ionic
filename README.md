@@ -5,7 +5,7 @@ _A Mobile Application for Worldline TechForum 2014_
 
 **Service :** SDCO - Software Engineering - Web & Mobile Framework
 
-**Technology :** Cordova - HTML5 CSS3
+**Technology :** Cordova - HTML5 - CSS3 - JavaScript - AngularJS
 
 **FrameWork :** Ionic
 
@@ -44,13 +44,9 @@ $ cd ..
 $ cordova platform add android
 $ cordova plugin add org.apache.cordova.splashscreen
 $ cordova plugin add org.apache.cordova.geolocation
-$ cordova build android
-```
-
 Add Splascreen and Icon
-
-```bash
 $  cp -r www/res/android/res platforms/android/
+$ cordova build android
 ```
 
 To launch a emulator (you must have Android ADB and a AVD (Android virtual Device)

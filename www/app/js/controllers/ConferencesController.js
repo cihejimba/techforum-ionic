@@ -92,6 +92,6 @@ angular.module('app')
 
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
-            $state.go('tab.conference-detail',{conferenceId: idConference})
+                $state.go('tab.conference-detail',{conferenceId: idConference})
         }
     }]);
