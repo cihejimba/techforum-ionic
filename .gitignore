@@ -1,14 +1,14 @@
 #Cordova
 
-platforms/^.*
-plugins/^.*
-mergesgit
+platforms/**/*
+plugins/**/*
+merges
 
 .idea
 
 #Node
-www/node_modules
+www/node_modules/**/*
 
 #Bower
-www/app/libs
+www/app/libs/**/*
 

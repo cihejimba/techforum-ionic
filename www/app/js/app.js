@@ -2,19 +2,14 @@
  * Cordova event
  */
 document.addEventListener("deviceready", function(){
-    console.log("Launch App techForum - deviceReady");
+    console.log("Cordova - Launch App techForum - deviceReady");
     navigator.splashscreen.hide();
-    navigator.globalization.dateToString(
-        new Date(),
-        function (date) { alert('date: ' + date.value + '\n'); },
-        function () { alert('Error getting dateString\n'); },
-        { formatLength: 'short', selector: 'date and time' }
-    );
 }, false);
-
+/**
+ * Ionic event
+ */
 ionic.Platform.ready(function(){
-    console.log("App - Cordova is ready, let's do this!");
-
+    console.log("Ionic - Launch App techForum - deviceReady");
 });
 
 /**
@@ -27,11 +22,13 @@ var app = angular.module('app', ['ionic','ngResource','techForum.filters','googl
  */
 app.config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
+            /** Tab **/
             .state('tab', {
                 url: "/tab",
                 abstract: true,
                 templateUrl: "views/layouts/tabs.html"
             })
+            /** Tab Home **/
             .state('tab.home', {
                 url: '/home',
                 views: {
@@ -41,15 +38,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
-            .state('tab.agenda', {
-                url: '/agenda',
-                views: {
-                    'agenda-tab': {
-                        templateUrl: 'views/partials/agenda.html',
-                        controller: 'AgendaController'
-                    }
-                }
-            })
+            /** Tab Conference **/
             .state('tab.conferences', {
                 url: '/conferences',
                 views: {
@@ -59,6 +48,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
+            /** Tab detail conference **/
             .state('tab.conference-detail', {
                 url: '/conference/:conferenceId',
                 views: {
@@ -68,6 +58,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
+            /** Tab Agenda **/
+            .state('tab.agenda', {
+                url: '/agenda',
+                views: {
+                    'agenda-tab': {
+                        templateUrl: 'views/partials/agenda.html',
+                        controller: 'AgendaController'
+                    }
+                }
+            })
+            /** Tab Agenda - View conference by day and shedule to add in agenda **/
             .state('tab.agenda-conference-schedule', {
                 url: '/agenda/conferences/:day/:schedule',
                 views: {
@@ -77,6 +78,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
+            /** Tab Agenda - detail conference in Agenda **/
+            .state('tab.conference-detail-agenda', {
+                url: '/conference-agenda/:conferenceId',
+                views: {
+                    'agenda-tab': {
+                        templateUrl: 'views/partials/detail_conference.html',
+                        controller: 'DetailConferenceController'
+                    }
+                }
+            })
+            /** Tab Access Map **/
             .state('tab.access', {
                 url: '/access',
                 views: {

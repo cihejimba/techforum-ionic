@@ -28,18 +28,28 @@ angular.module('app')
             $scope.current_day.day = 0;
 
         /** Retrieve a conference in function of day and schedule to display a next conference **/
-        ConferencesService.getLocalConferences().query(
-            function(data){
-                $scope.conferences = data;
-                $scope.scheduleConferences = ConferencesService.sortConferenceByStartByDay(data,$scope.current_day.day);
+        $scope.getConf = function(){
+            if (localStorage.getItem('conferences') == null) {
+                ConferencesService.getLocalConferences().query(
+                    function(data){
+                        $scope.conferences = data;
+                        $scope.scheduleConferences = ConferencesService.sortConferenceByStartByDay(data,$scope.current_day.day);
+                        $scope.nextSchedule = DateService.nextSchedule($scope.scheduleConferences,today);
+                        localStorage.setItem('conferences', JSON.stringify(data));
+                    },
+                    function(reason){
+                    }
+                );
+            } else {
+                $scope.conferences = JSON.parse(localStorage.getItem('conferences'));
+                $scope.scheduleConferences = ConferencesService.sortConferenceByStartByDay($scope.conferences,$scope.current_day.day);
                 $scope.nextSchedule = DateService.nextSchedule($scope.scheduleConferences,today);
-            },
-            function(reason){
             }
-        );
+        }
+
 
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
-            $state.go('tab.conference-detail',{conferenceId: idConference})
+            $state.go('tab.conference-detail',{conferenceId: idConference});
         }
     }]);

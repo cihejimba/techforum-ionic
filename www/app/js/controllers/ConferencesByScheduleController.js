@@ -18,7 +18,7 @@ angular.module('app')
 
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
-            $state.go('tab.conference-detail',{conferenceId: idConference})
+            $state.go('tab.conference-detail-agenda',{conferenceId: idConference});
         }
 
         if (localStorage.getItem('conferences') == null) {

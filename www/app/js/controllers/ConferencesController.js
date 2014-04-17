@@ -2,7 +2,7 @@
  * Conference Controller
  */
 angular.module('app')
-    .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state','$timeout', function($scope,ConferencesService,$ionicLoading,$state,$timeout)
+    .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state', function($scope,ConferencesService,$ionicLoading,$state)
     {
         console.log('--- ConferencesController ---');
 
@@ -11,41 +11,36 @@ angular.module('app')
         $scope.numButton = 1;
         $scope.selectedConferenceId = -1;
 
-        /** Retrieve all conference for to display in conference list **/
+        /** Retrieve all conference for to display in conference list
+         * Is not conference in localStorage = retrieve by internet and display a loading
+         * Else display conference in localStorage
+         * **/
         $scope.getAllConf = function(){
-            $scope.loading = $ionicLoading.show({
-                content: '<div>Loading conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
-                animation: 'fade-in',
-                showBackdrop: true,
-                maxWidth: 200,
-                showDelay: 0
-            });
-
-            $timeout(function () {
-                if (localStorage.getItem('conferences') == null) {
-                    console.log("localStorage.getItem('conferences') == null");
-                    ConferencesService.getConferencesResource().query(
-                        function (data) {
-                            $scope.conferences = data;
-                            $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
-                            localStorage.setItem('conferences', JSON.stringify(data));
-                            $scope.loading.hide();
-                        },
-                        function (reason) {
-                            console.log(reason);
-                            alert('Unable to retrieve conferences list');
-                            $scope.loading.hide();
-                        }
-                    );
-
-                } else {
-                    console.log("localStorage.getItem('conferences') != null");
-                    $scope.conferences = JSON.parse(localStorage.getItem('conferences'));
-                    $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
-                    $scope.loading.hide();
-                }
-            }, 1000);
-
+            if (localStorage.getItem('conferences') == null) {
+                $scope.loading = $ionicLoading.show({
+                    content: '<div>Loading conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
+                    animation: 'fade-in',
+                    showBackdrop: true,
+                    maxWidth: 200,
+                    showDelay: 0
+                });
+                ConferencesService.getLocalConferences().query(
+                    function(data){
+                        $scope.conferences = data;
+                        $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
+                        localStorage.setItem('conferences', JSON.stringify(data));
+                        $scope.loading.hide();
+                    },
+                    function(reason){
+                        console.log(reason);
+                        alert('Unable to retrieve conferences list');
+                        $scope.loading.hide();
+                    }
+                );
+            } else {
+                $scope.conferences = JSON.parse(localStorage.getItem('conferences'));
+                $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
+            }
          }
 
         /** Update conference list by Internet **/
@@ -92,6 +87,6 @@ angular.module('app')
 
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
-                $state.go('tab.conference-detail',{conferenceId: idConference})
+                $state.go('tab.conference-detail',{conferenceId: idConference});
         }
     }]);

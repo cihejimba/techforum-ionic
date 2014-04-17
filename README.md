@@ -44,19 +44,28 @@ $ cd ..
 $ cordova platform add android
 $ cordova plugin add org.apache.cordova.splashscreen
 $ cordova plugin add org.apache.cordova.geolocation
+```
+
+### Android
+```bash
 Add Splascreen and Icon
 $  cp -r www/res/android/res platforms/android/
 $ cordova build android
-```
-
 To launch a emulator (you must have Android ADB and a AVD (Android virtual Device)
-```bash
 $ cordova emulate android
+or to launch in your phone
+$ cordova run
 ```
 
-or to launch in your phone
+### IOS
 ```bash
-$ cordova run
+$  ahead
+$ cordova build ios
+```
+
+### Window 8
+```bash
+$  ahead
 ```
 
 _If you have a problem to install Cordova plugin_

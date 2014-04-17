@@ -2,13 +2,14 @@
  * DetailConference Controller
  */
 angular.module('app')
-    .controller('DetailConferenceController', ['$scope','$stateParams','ConferencesService','MessagesService','$ionicNavBarDelegate','$ionicLoading','$resource','$state','AgendaService', function($scope,$stateParams,ConferencesService,MessagesService,$ionicNavBarDelegate,$ionicLoading,$resource,$state,AgendaService)
+    .controller('DetailConferenceController', ['$scope','$stateParams','ConferencesService','MessagesService','$ionicNavBarDelegate','$ionicLoading','$resource','$state','AgendaService','$ionicPopup', function($scope,$stateParams,ConferencesService,MessagesService,$ionicNavBarDelegate,$ionicLoading,$resource,$state,AgendaService,$ionicPopup)
     {
         console.log('--- DetailConferenceController ---');
 
         var idConference = $stateParams.conferenceId;
         var conferences = [];
         $scope.comments = [];
+        $scope.conference = [];
         $scope.loadingComment = "loading...";
         $scope.showHideComment = 'show';
         $scope.newComment = {
@@ -44,7 +45,7 @@ angular.module('app')
         $scope.postComment = function(idConference){
 
             var commentR = MessagesService.getOnlineMsgComment();
-            comment = new commentR();
+            var comment = new commentR();
             comment.name = $scope.newComment.name,
             comment.msg = $scope.newComment.msg,
             comment.type = "comment",
@@ -53,11 +54,19 @@ angular.module('app')
 
             comment.$save(
                 function(data, getResponseHeadersSuccess){
-                    alert("Your comment has been sent correctly.")
-                    getComments();
+                    $ionicPopup.alert({
+                        title: 'Send comment',
+                        content: 'Your comment has been sent correctly.'
+                    }).then(function(res) {
+                        getComments();
+                    });;
+
                 },
                 function(data,getResponseHeadersError){
-                    console.log("Impossible to send your comment");
+                    $ionicPopup.alert({
+                        title: 'Send comment',
+                        content: 'Impossible to send your comment'
+                    });
                 }
             );
 
@@ -81,8 +90,8 @@ angular.module('app')
         }
 
         /** Return to conference list **/
-        $scope.backConferences =function(){
-            //$state.go('tab.conferences');
+        $scope.back =function(){
+            console.log("back function");
             $ionicNavBarDelegate.back();
         }
 
@@ -94,8 +103,12 @@ angular.module('app')
             else{
                 if(AgendaService.checkSameScheduleConferenceInAgenda(id,conferences) == false)
                     AgendaService.addToAgenda(id);
-                else
-                    alert("One conference already to add with the same to start");
+                else{
+                    $ionicPopup.alert({
+                        title: 'Impossible',
+                        content: 'One conference already to add with the same to start'
+                    });
+                }
             }
         }
     }]);

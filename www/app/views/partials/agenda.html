@@ -1,4 +1,4 @@
-<ion-view title="Agenda">
+<ion-view title="Agenda" ng-init="getAgendaAndConference()">
     <ion-content class="has-header has-tabs" padding="true">
 
         <p  class="italic" ng-show="!myAgenda.length">You don't have conference in your agenda</p>
@@ -99,11 +99,11 @@
                         <p class="col col-20 room-conference">R {{conferenceAgenda.where}}</p>
                         <p class="col col-80"><strong>{{conferenceAgenda.title}}</strong></p>
                     </div>
-                    <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id)">Delete</ion-delete-button>
+                    <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id);$event.stopPropagation()">Delete</ion-delete-button>
                 </ion-item>
                 <div class="row" ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day2).length">
                     <p class="col">You don't have a conference</p>
-                    <button class="col" ng-click="viewConferenceWithTime(day.day2,itemSchedule)">Add conference</button>
+                    <button class="col" ng-click="viewConferenceWithTime(day.day2,itemSchedule);">Add conference</button>
                 </div>
             </div>
 

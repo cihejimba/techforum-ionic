@@ -1,7 +1,7 @@
 /**
  * Agenda Service
  */
-app.factory('AgendaService',['ConferencesService', function(ConferencesService) {
+app.factory('AgendaService',['ConferencesService','$ionicPopup', function(ConferencesService,$ionicPopup) {
 
     var agendaFactory = {
 
@@ -12,22 +12,37 @@ app.factory('AgendaService',['ConferencesService', function(ConferencesService) 
             var alreadyExist = false;
 
             if(localStorage.getItem('myAgenda') == null){
-                agenda = new Array();
-                agenda.push(idConference);
-                localStorage.setItem('myAgenda',JSON.stringify(agenda));
-                alert("Conference to add on your agenda");
+                $ionicPopup.confirm({
+                    title: 'Add conference',
+                    content: 'Do you want add this conference on your agenda ?'
+                }).then(function(res) {
+                    if(res) {
+                        agenda = new Array();
+                        agenda.push(idConference);
+                        localStorage.setItem('myAgenda',JSON.stringify(agenda));
+                    }
+                });
             }else{
                 agenda = JSON.parse(localStorage.getItem('myAgenda'));
                 angular.forEach(agenda, function(value,key){
                     if(value == idConference){
-                        alert("You are already to add this conference");
+                        $ionicPopup.alert({
+                            title: 'Impossible',
+                            content: 'You are already to add this conference'
+                        });
                         alreadyExist = true;
                     }
                 });
                 if(alreadyExist == false){
-                    agenda.push(idConference);
-                    localStorage.setItem('myAgenda',JSON.stringify(agenda));
-                    alert("Conference to add on your agenda");
+                    $ionicPopup.confirm({
+                        title: 'Add conference',
+                        content: 'Do you want add this conference on your agenda ?'
+                    }).then(function(res) {
+                        if(res) {
+                            agenda.push(idConference);
+                            localStorage.setItem('myAgenda',JSON.stringify(agenda));
+                        }
+                    });
                 }
             }
         },
