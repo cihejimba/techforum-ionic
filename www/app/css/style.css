@@ -109,11 +109,11 @@ p.room-detail-conference{
 }
 
 /*****************************\
-*          Conference         *
+*       Detail Conference     *
 \*****************************/
 
-input.field-comment{
-    width: 150px;
+textarea.field-comment, input.field-comment{
+    width: 50%;
     border : 1px solid #e5e5e5;
 }
 .last-field-comment{

@@ -52,7 +52,8 @@
             <fieldset>
                 <legend>Post a comment</legend>
                 Name : <input class="field-comment" type="text" ng-model="newComment.name" placeholder=" name"/>
-                Content : <input class="field-comment last-field-comment" type="text" ng-model="newComment.msg" placeholder=" msg"/>
+
+                Content : <textarea rows="4" class="field-comment last-field-comment" type="text" ng-model="newComment.msg" placeholder=" Enter your message"></textarea>
                 <button class="button" ng-click="postComment(conference._id)">Send comment</button><br/>
             </fieldset>
         </section>

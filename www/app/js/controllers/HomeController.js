@@ -20,16 +20,16 @@ angular.module('app')
         $scope.time = DateService.dateDiff(today,day1);
 
         /** Check a actual day **/
-        if(DateService.compare(day1,todayShort) == 0 ){
+        if(DateService.compare(day1,todayShort) === 0 ){
             $scope.current_day.day = 1;
-        }else if(DateService.compare(day2,todayShort) == 0 ){
+        }else if(DateService.compare(day2,todayShort) === 0 ){
             $scope.current_day.day = 2;
         }else
             $scope.current_day.day = 0;
 
         /** Retrieve a conference in function of day and schedule to display a next conference **/
         $scope.getConf = function(){
-            if (localStorage.getItem('conferences') == null) {
+            if (localStorage.getItem('conferences') === null) {
                 ConferencesService.getLocalConferences().query(
                     function(data){
                         $scope.conferences = data;
@@ -45,11 +45,10 @@ angular.module('app')
                 $scope.scheduleConferences = ConferencesService.sortConferenceByStartByDay($scope.conferences,$scope.current_day.day);
                 $scope.nextSchedule = DateService.nextSchedule($scope.scheduleConferences,today);
             }
-        }
-
+        };
 
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
             $state.go('tab.conference-detail',{conferenceId: idConference});
-        }
+        };
     }]);

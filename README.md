@@ -22,14 +22,23 @@ _A Mobile Application for Worldline TechForum 2014_
 
 Install a follow components
 
-### Node.js
+Use "**sudo**" if you buil with Mac and Linux
+
+**Node.js**
+
 [http://nodejs.org/](http://nodejs.org/)
 
-### Cordova
+_Configure NPM proxy_
+```bash
+npm config set proxy http://proxy:PORT
+npm config set https-proxy http://proxy:PORT
+```
+
+**Cordova**
 ```bash
 npm install -g cordova
 ```
-### Bower
+**Bower**
 ```bash
 npm install -g bower
 ```
@@ -46,7 +55,7 @@ $ cordova plugin add org.apache.cordova.splashscreen
 $ cordova plugin add org.apache.cordova.geolocation
 ```
 
-### Android
+### Android Version
 ```bash
 Add Splascreen and Icon
 $  cp -r www/res/android/res platforms/android/
@@ -57,13 +66,13 @@ or to launch in your phone
 $ cordova run
 ```
 
-### IOS
+### IOS Version
 ```bash
 $  ahead
 $ cordova build ios
 ```
 
-### Window 8
+### Window 8 Version
 ```bash
 $  ahead
 ```

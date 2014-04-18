@@ -30,7 +30,7 @@ app.factory('ConferencesService', ['$resource', function($resource) {
         /** create a tab sort with start schedule conference by day **/
         sortConferenceByStartByDay : function(pConference,day){
             var tab =[];
-            if(day == 0){
+            if(day === 0){
                 tab = [];
             }else{
                 angular.forEach(pConference, function(value, key){
@@ -40,7 +40,6 @@ app.factory('ConferencesService', ['$resource', function($resource) {
                 });
             }
             confFactory.scheduleConference = tab.sort();
-            console.log(confFactory.scheduleConference);
             return confFactory.scheduleConference;
         },
         /** check if two conference are equals **/
@@ -63,8 +62,7 @@ app.factory('ConferencesService', ['$resource', function($resource) {
         conferenceResourceIsEmpty : function(){
             confFactory.getConferencesResource().query(
                 function(data){
-                    console.log("ya des data");
-                    if(data == null)
+                    if(data === null)
                         return true;
                     else
                         return false;

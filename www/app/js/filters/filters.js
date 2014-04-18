@@ -11,5 +11,5 @@ angular.module('techForum.filters',[])
                 }
             });
             return tab;
-        }
+        };
     });

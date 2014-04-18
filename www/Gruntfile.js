@@ -8,23 +8,21 @@ module.exports = function(grunt){
     grunt.initConfig({
 
         jshint: {
-            all: ['app/js/*.js','!app/js/min.js']
+            all: ['app/js/**/*.js','!app/js/techforum.js',"!app/js/techforum-min.js"],
+            techforum :['app/js/techforum.js']
         },
 
         concat: {
-            options: {
-                separator: ';'
-            },
             fusionJS: {
-                src: ['app/libs/angular/angular.js', 'app/libs/angular/angular-sanitize.js'],
-                dest: 'app/libs/script.js'
+                src: ['app/js/app.js', 'app/js/**/*.js',"!app/js/techforum-min.js"],
+                dest: 'app/js/techforum.js'
             }
         },
 
         uglify: {
             minJS: {
                 files: {
-                    'app/js/min.js': ['app/libs/script.js']
+                    'app/js/techforum-min.js': ['app/js/techforum.js']
                 }
             }
         },
@@ -32,12 +30,10 @@ module.exports = function(grunt){
         cssmin: {
             combine: {
                 files: {
-                    'app/css/min.css': ['app/css/*.css']
+                    'app/css/techforum-min.css': ['app/css/**/*.css','!app/css/techforum-min.css']
                 }
             }
         }
     });
-
-    grunt.registerTask('default',['jshint','concat','uglify','cssmin']);
-
+    grunt.registerTask('default',['jshint:all','concat','jshint:techforum','uglify','cssmin']);
 }

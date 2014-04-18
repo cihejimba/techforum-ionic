@@ -1,7 +1,7 @@
 /**
  * Agenda Service
  */
-app.factory('AgendaService',['ConferencesService','$ionicPopup', function(ConferencesService,$ionicPopup) {
+app.factory('AgendaService',['$ionicPopup', function($ionicPopup) {
 
     var agendaFactory = {
 
@@ -11,13 +11,13 @@ app.factory('AgendaService',['ConferencesService','$ionicPopup', function(Confer
             var agenda = [];
             var alreadyExist = false;
 
-            if(localStorage.getItem('myAgenda') == null){
+            if(localStorage.getItem('myAgenda') === null){
                 $ionicPopup.confirm({
                     title: 'Add conference',
                     content: 'Do you want add this conference on your agenda ?'
                 }).then(function(res) {
                     if(res) {
-                        agenda = new Array();
+                        agenda = [];
                         agenda.push(idConference);
                         localStorage.setItem('myAgenda',JSON.stringify(agenda));
                     }
@@ -33,7 +33,7 @@ app.factory('AgendaService',['ConferencesService','$ionicPopup', function(Confer
                         alreadyExist = true;
                     }
                 });
-                if(alreadyExist == false){
+                if(alreadyExist === false){
                     $ionicPopup.confirm({
                         title: 'Add conference',
                         content: 'Do you want add this conference on your agenda ?'
@@ -65,14 +65,14 @@ app.factory('AgendaService',['ConferencesService','$ionicPopup', function(Confer
                 }
             }
             // recherche du meme horaire
-            while(res == false && index < conferencesInAgenda.length){
+            while(res === false && index < conferencesInAgenda.length){
                 if(conferencesInAgenda[index].when.start == conference.when.start){
                     console.log("Conference with the same start find !");
                     res = true;
                 }
                 index++;
-            };
-            console.log("Same schedule : "+res);
+            }
+            console.log("Same schedule ? : "+res);
             return res;
         }
     };

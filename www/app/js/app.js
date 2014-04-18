@@ -15,12 +15,12 @@ ionic.Platform.ready(function(){
 /**
  * Modules declaration
  */
-var app = angular.module('app', ['ionic','ngResource','techForum.filters','google-maps'])
+var app = angular.module('app', ['ionic','ngResource','techForum.filters','google-maps']);
 
 /**
  * Route configuration
  */
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $stateProvider
             /** Tab **/
             .state('tab', {
@@ -99,4 +99,4 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             });
         $urlRouterProvider.otherwise('/tab/home');
-    });
+    }]);

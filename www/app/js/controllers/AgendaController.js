@@ -18,15 +18,12 @@ angular.module('app')
         var getSchedule = function(conferences){
             $scope.mySchedule1 = ConferencesService.sortConferenceByStartByDay(conferences,$scope.day.day1);
             $scope.mySchedule2 = ConferencesService.sortConferenceByStartByDay(conferences,$scope.day.day2);
-        }
+        };
 
-        var test = function(){
-
-        }
         $scope.getAgendaAndConference = function(){
             /** Retrieve schedule conference **/
             var conferences = [];
-            if (localStorage.getItem('conferences') == null){
+            if (localStorage.getItem('conferences') === null){
                 ConferencesService.getConferencesResource().query(
                     function (data) {
                         conferences = data;
@@ -40,7 +37,7 @@ angular.module('app')
                 conferences = JSON.parse(localStorage.getItem('conferences'));
                 getSchedule(conferences);
             }
-            if(localStorage.getItem('myAgenda') != null) {
+            if(localStorage.getItem('myAgenda') !== null) {
                 agenda = JSON.parse(localStorage.getItem('myAgenda'));
                 angular.forEach(conferences, function (value, key) {
                     if(agenda.indexOf(value._id+"") != -1){
@@ -49,21 +46,18 @@ angular.module('app')
                 });
                 getSchedule(conferences);
                 $scope.myAgenda = conferencesInAgenda;
-            }else{
-                console.log("Il n'y a pas de conferences dans l'agenda");
             }
-
-        }
+        };
 
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
-            $state.go('tab.conference-detail',{conferenceId: idConference})
-        }
+            $state.go('tab.conference-detail',{conferenceId: idConference});
+        };
 
         /** View conference for time in agenda **/
         $scope.viewConferenceWithTime = function(day,schedule){
             $state.go('tab.agenda-conference-schedule',{day: day,schedule:schedule});
-        }
+        };
 
         /** Delete a conference in agenda **/
         $scope.onItemDelete = function(idConferenceToDelete) {
@@ -73,7 +67,7 @@ angular.module('app')
                 content: 'Do you want delete this conference on your agenda ?'
             }).then(function(res) {
                 if(res) {
-                    if (localStorage.getItem('myAgenda') != null) {
+                    if (localStorage.getItem('myAgenda') !== null) {
                         agenda = JSON.parse(localStorage.getItem('myAgenda'));
                         var itemAgenda = agenda.indexOf(idConferenceToDelete + "");
                         if (itemAgenda != -1) {
@@ -81,15 +75,12 @@ angular.module('app')
                             localStorage.setItem('myAgenda', JSON.stringify(agenda));
                         }
                         for (i = 0; i < $scope.myAgenda.length; i++) {
-                            console.log($scope.myAgenda[i]);
                             if ($scope.myAgenda[i]._id == idConferenceToDelete)
                                 $scope.myAgenda.splice(i, 1);
                         }
                     } else
                         alert("Error - please can reload application");
-                } else {
-                    console.log('You are not sure');
                 }
             });
-        }
+        };
     }]);

@@ -22,10 +22,10 @@
   "license": "Atos Worldline",
   "devDependencies": {
     "express": "^3.4.8",
-    "grunt": "^0.4.4"
-  },
-  "dependencies": {
-    "karma": "^0.12.1",
-    "grunt-karma": "^0.8.2"
+    "grunt": "^0.4.4",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-cssmin": "^0.9.0"
   }
 }

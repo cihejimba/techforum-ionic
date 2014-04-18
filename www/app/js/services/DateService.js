@@ -8,11 +8,11 @@ app.factory('DateService', function() {
         /** compare two date : 0 if date_1=date_2 , 1 if date_1>date_2 , -1 if date_1<date_2 **/
         compare : function (date_1, date_2){
             var diff = date_1.getTime()-date_2.getTime();
-            return (diff==0?diff:diff/Math.abs(diff));
+            return (diff===0?diff:diff/Math.abs(diff));
         },
         /** get a time between two date **/
         dateDiff : function(date1, date2){
-            var diff = {}
+            var diff = {};
             var tmp = date2 - date1;
 
             tmp = Math.floor(tmp/1000);             // second number between two date
@@ -39,7 +39,6 @@ app.factory('DateService', function() {
                 heure = tab[i].substring(0,2);
                 minute = tab[i].substring(3,5);
                 var d = new Date(date.getFullYear(),date.getMonth(),date.getDate(),heure,minute);
-                console.log("d = "+d);
                 if(date < d){
                     if(d-date<res) {
                         res = tab[i];

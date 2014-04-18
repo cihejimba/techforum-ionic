@@ -2,7 +2,7 @@
  * Conference Controller
  */
 angular.module('app')
-    .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state', function($scope,ConferencesService,$ionicLoading,$state)
+    .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state','$ionicPopup', function($scope,ConferencesService,$ionicLoading,$state,$ionicPopup)
     {
         console.log('--- ConferencesController ---');
 
@@ -16,7 +16,7 @@ angular.module('app')
          * Else display conference in localStorage
          * **/
         $scope.getAllConf = function(){
-            if (localStorage.getItem('conferences') == null) {
+            if (localStorage.getItem('conferences') === null) {
                 $scope.loading = $ionicLoading.show({
                     content: '<div>Loading conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
                     animation: 'fade-in',
@@ -32,7 +32,6 @@ angular.module('app')
                         $scope.loading.hide();
                     },
                     function(reason){
-                        console.log(reason);
                         alert('Unable to retrieve conferences list');
                         $scope.loading.hide();
                     }
@@ -41,7 +40,7 @@ angular.module('app')
                 $scope.conferences = JSON.parse(localStorage.getItem('conferences'));
                 $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
             }
-         }
+         };
 
         /** Update conference list by Internet **/
         $scope.updateConference = function(){
@@ -56,26 +55,29 @@ angular.module('app')
 
             ConferencesService.getOnlineConference().query(
                 function(confOnline){
-                    console.log('Same confLocal-confOnline : '+ ConferencesService.checkSameConferences($scope.conferences,confOnline));
                     if(!ConferencesService.checkSameConferences($scope.conferences,confOnline)){
-                        console.log("Update conference on device");
                         $scope.conferences = confOnline;
                         ConferencesService.setConferencesResource(confOnline);
                         localStorage.setItem('conferences', JSON.stringify(confOnline));
                         $scope.loading.hide();
+                        $ionicPopup.alert({
+                            title: 'Update conference',
+                            content: 'You have correctly update conference list'
+                        });
                     }else{
                         $scope.loading.hide();
-                        console.log("Conference on device already last update");
+                        $ionicPopup.alert({
+                            title: 'Update conference',
+                            content: 'You have already a last conference list'
+                        });
                     }
                 },
                 function(reason){
                     $scope.loading.hide();
-                    alert("no connexion");
-                    console.log(reason);
                     return -1;
                 }
             );
-        }
+        };
 
         /** Display a conference resume in a conference list **/
         $scope.DisplayConference = function(conference){
@@ -83,10 +85,10 @@ angular.module('app')
                 $scope.selectedConferenceId = -1;
             else
                 $scope.selectedConferenceId = conference._id;
-        }
+        };
 
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
                 $state.go('tab.conference-detail',{conferenceId: idConference});
-        }
+        };
     }]);

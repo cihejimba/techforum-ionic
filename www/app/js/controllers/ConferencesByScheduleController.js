@@ -8,27 +8,23 @@ angular.module('app')
         $scope.day = $stateParams.day;
         $scope.schedule = $stateParams.schedule;
 
-        console.log("day : "+$scope.day);
-        console.log("schedule : "+$scope.schedule);
-
         /** Return to Agenda **/
         $scope.backAgenda =function(){
             $state.go('tab.agenda');
-        }
+        };
 
         /** Redirection to detail conference **/
         $scope.viewConference = function(idConference){
             $state.go('tab.conference-detail-agenda',{conferenceId: idConference});
-        }
+        };
 
-        if (localStorage.getItem('conferences') == null) {
+        if (localStorage.getItem('conferences') === null) {
             ConferencesService.getConferencesResource().query(
                 function (data) {
                     $scope.conferences = data;
                     $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
                 },
                 function (reason) {
-                    console.log(reason);
                     alert('Unable to retrieve conferences list');
                 }
             );
