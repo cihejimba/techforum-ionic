@@ -18,7 +18,7 @@ _A Mobile Application for Worldline TechForum 2014_
 
 > [Here a link to futur android app](https://github.com/got5/techforum-ionic)
 
-## To build
+## To install development development and production environments
 
 Install a follow components
 
@@ -30,8 +30,8 @@ Use "**sudo**" if you buil with Mac and Linux
 
 _Configure NPM proxy_
 ```bash
-npm config set proxy http://proxy:PORT
-npm config set https-proxy http://proxy:PORT
+npm config set proxy http://[proxy]:[PORT]
+npm config set https-proxy http://[proxy]:[PORT]
 ```
 
 **Cordova**
@@ -42,40 +42,63 @@ npm install -g cordova
 ```bash
 npm install -g bower
 ```
+_Configure Bower proxy_
 
-then run:
+Add in .bowerrc
+```bash
+"proxy":"http://[proxy]:[PORT]",
+"https-proxy":"http://[proxy]:[PORT]"
+```
+
+**Grunt**
+```bash
+npm install -g grunt-cli
+```
+
+Then run:
 
 ```bash
-$ cd www
+$ cd dev
 $ npm install
 $ bower install
 $ cd ..
-$ cordova platform add android
+```
+
+The development environment is now installed
+
+***
+
+**To install prod environnement**
+```bash
+$ sh script
+```
+
+**Add cordova plugin**
+```bash
 $ cordova plugin add org.apache.cordova.splashscreen
 $ cordova plugin add org.apache.cordova.geolocation
 ```
 
-### Android Version
+### To build for Android
 ```bash
+$ cordova platform add android
 Add Splascreen and Icon
-$  cp -r www/res/android/res platforms/android/
+$  cp -r dev/res/android/res platforms/android/
 $ cordova build android
 To launch a emulator (you must have Android ADB and a AVD (Android virtual Device)
 $ cordova emulate android
 or to launch in your phone
-$ cordova run
+$ cordova run android
 ```
 
-### IOS Version
+### To build for IOS
 ```bash
-$  ahead
+$ cordova platform add ios
+To launch a emulator (update xcode before)
 $ cordova build ios
+$ cordova emulate ios
 ```
 
-### Window 8 Version
-```bash
-$  ahead
-```
 
 _If you have a problem to install Cordova plugin_
 
@@ -89,7 +112,7 @@ cordova plugin add [pathtotheextractedplugingit]cordova-plugin-geolocation-maste
 cordova plugin add [pathtotheextractedplugingit]cordova-plugin-splashscreen-master
 ```
 
-## To test in local 
+## To test in Development Environments
 
 Install Ripple emulator for Google Chrome
 

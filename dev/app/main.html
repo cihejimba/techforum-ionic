@@ -23,9 +23,24 @@
 
         <!-- Grunt task -->
 
-        <link rel="stylesheet" href="css/techforum-min.css">
+        <!-- build:css css/techforum-min.css -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- /build -->
 
-        <script src="js/techforum-min.js"></script>
+        <!-- build:js js/techforum-min.js -->
+        <script src="js/app.js"></script>
+        <script src="js/services/ConferencesService.js"></script>
+        <script src="js/services/MessagesService.js"></script>
+        <script src="js/services/DateService.js"></script>
+        <script src="js/services/AgendaService.js"></script>
+        <script src="js/filters/filters.js"></script>
+        <script src="js/controllers/HomeController.js"></script>
+        <script src="js/controllers/AgendaController.js"></script>
+        <script src="js/controllers/ConferencesByScheduleController.js"></script>
+        <script src="js/controllers/ConferencesController.js"></script>
+        <script src="js/controllers/DetailConferenceController.js"></script>
+        <script src="js/controllers/AccessController.js"></script>
+        <!-- /build -->
 
     </head>
 

@@ -7,8 +7,12 @@ merges
 .idea
 
 #Node
+dev/node_modules/**/*
 www/node_modules/**/*
 
 #Bower
-www/app/libs/**/*
+dev/app/libs/**/*
+
+#Application
+www/**/*
 
