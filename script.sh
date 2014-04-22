@@ -57,8 +57,4 @@ echo "Copie des icons ionic"
 mkdir -p www/app/libs/ionic/release/fonts
 cp dev/app/libs/ionic/release/fonts/*.* www/app/libs/ionic/release/fonts
 
-echo "-- L'application TechForum 2014 contenu dans le dossier \"www\" peut Ãªtre mise en production --"
-
-
-
-
+echo "-- L'application TechForum 2014 contenu dans le dossier \"www\" peut être mise en production --"

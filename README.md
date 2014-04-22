@@ -69,6 +69,13 @@ The development environment is now installed
 ***
 
 **To install prod environnement**
+
+If you use mac ou linux
+```bash
+chmod u+x script.sh
+perl -i -pe 'y|\r||d' script.pl
+```
+
 ```bash
 $ sh script
 ```
@@ -94,6 +101,9 @@ $ cordova run android
 ### To build for IOS
 ```bash
 $ cordova platform add ios
+Add Splascreen and Icon
+$  cp -r dev/res/ios7/icons/ platforms/ios/TechForum\ 2014/Images.xcassets/AppLcon.appiconset
+$  cp -r dev/res/ios7/splash platforms/ios/TechForum\ 2014/Images.xcassets/launchImage.launchimage
 To launch a emulator (update xcode before)
 $ cordova build ios
 $ cordova emulate ios
