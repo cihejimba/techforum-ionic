@@ -1,17 +1,24 @@
 /**
  * Cordova event
  */
-document.addEventListener("deviceready", function(){
-    console.log("Cordova - Launch App techForum - deviceReady");
-    navigator.splashscreen.hide();
-}, false);
-/**
- * Ionic event
- */
-ionic.Platform.ready(function(){
-    console.log("Ionic - Launch App techForum - deviceReady");
-});
+document.addEventListener("deviceready", onDeviceReady, false);
 
+function onDeviceReady(){
+
+    navigator.splashscreen.hide();
+
+    document.addEventListener("backbutton", function(e){
+
+/*        if($.mobile.activePage.is('#homepage')){
+            e.preventDefault();
+            navigator.app.exitApp();
+        }
+        else {
+            navigator.app.backHistory();
+        }*/
+
+    }, false);
+}
 /**
  * Modules declaration
  */

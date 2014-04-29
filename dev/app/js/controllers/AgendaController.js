@@ -9,7 +9,6 @@ angular.module('app')
         var conferencesInAgenda = [];
         var agenda = null;
         $scope.myAgenda = [];
-
         $scope.day = {
             day1 : 1,
             day2 : 2

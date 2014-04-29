@@ -37,24 +37,28 @@
             </div>
         </div>
 
-        <!-- BUTTON GEOLOCALISATION -->
-        <div class="row">
-            <button class="col button-geo button button-positive" ng-click="locateWorldline()">Where is Worldline ?</button>
-            <button class="col button-geo button button-positive" ng-click="getMyposition()">Locate Me</button>
-        </div>
 
-        <!-- GOOGLE MAP -->
-        <google-map center="map.center" zoom="map.zoom" draggable="true" refresh="true">
-            <marker coords="map.markerWorldline">
-                <window isIconVisibleOnClick="true">
-                    <p>
-                        <strong>Atos Worldline</strong><br/>
-                        <span style="font-style: italic">23 Rue de la Pointe 59113 Seclin</span>
-                    </p>
-                </window>
-            </marker>
-            <marker coords="map.markerYou"></marker>
-        </google-map>
+        <div ng-show="connected">
+            <!-- BUTTON GEOLOCALISATION -->
+            <div class="row">
+                <button class="col button-geo button button-positive" ng-click="locateWorldline()">Where is Worldline ?</button>
+                <button class="col button-geo button button-positive" ng-click="getMyposition()">Locate Me</button>
+            </div>
+
+            <!-- GOOGLE MAP -->
+            <google-map center="map.center" zoom="map.zoom" draggable="true" refresh="true">
+                <marker coords="map.markerWorldline">
+                    <window isIconVisibleOnClick="true">
+                        <p>
+                            <strong>Atos Worldline</strong><br/>
+                            <span style="font-style: italic">23 Rue de la Pointe 59113 Seclin</span>
+                        </p>
+                    </window>
+                </marker>
+                <marker coords="map.markerYou"></marker>
+            </google-map>
+        </div>
+        <p ng-hide="connected" class="center">You don't have a internet connection to display a map</p>
 
     </ion-content>
 </ion-view>

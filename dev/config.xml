@@ -10,7 +10,6 @@
     <content src="app/index.html" />
     <access origin="*" />
 
-    <preference name="Fullscreen" value="true" />
     <preference name="SplashScreen" value="splashscreen" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="webviewbounce" value="false" />

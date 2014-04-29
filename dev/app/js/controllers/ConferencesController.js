@@ -2,7 +2,7 @@
  * Conference Controller
  */
 angular.module('app')
-    .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state','$ionicPopup', function($scope,ConferencesService,$ionicLoading,$state,$ionicPopup)
+    .controller('ConferencesController', ['$scope','ConferencesService','$ionicLoading','$state','$ionicPopup','ConnectionService', function($scope,ConferencesService,$ionicLoading,$state,$ionicPopup,ConnectionService)
     {
         console.log('--- ConferencesController ---');
 
@@ -45,38 +45,46 @@ angular.module('app')
         /** Update conference list by Internet **/
         $scope.updateConference = function(){
 
-           $scope.loading = $ionicLoading.show({
-               content: '<div>Update conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
-               animation: 'fade-in',
-               showBackdrop: true,
-               maxWidth: 200,
-               showDelay: 0
-           });
+            if(ConnectionService.isConnected()){
 
-            ConferencesService.getOnlineConference().query(
-                function(confOnline){
-                    if(!ConferencesService.checkSameConferences($scope.conferences,confOnline)){
-                        $scope.conferences = confOnline;
-                        ConferencesService.setConferencesResource(confOnline);
-                        localStorage.setItem('conferences', JSON.stringify(confOnline));
+                $scope.loading = $ionicLoading.show({
+                    content: '<div>Update conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
+                    animation: 'fade-in',
+                    showBackdrop: true,
+                    maxWidth: 200,
+                    showDelay: 0
+                });
+
+                ConferencesService.getOnlineConference().query(
+                    function(confOnline){
+                        if(!ConferencesService.checkSameConferences($scope.conferences,confOnline)){
+                            $scope.conferences = confOnline;
+                            ConferencesService.setConferencesResource(confOnline);
+                            localStorage.setItem('conferences', JSON.stringify(confOnline));
+                            $scope.loading.hide();
+                            $ionicPopup.alert({
+                                title: 'Update conference',
+                                content: 'You have correctly update conference list'
+                            });
+                        }else{
+                            $scope.loading.hide();
+                            $ionicPopup.alert({
+                                title: 'Update conference',
+                                content: 'You have already a last conference list'
+                            });
+                        }
+                    },
+                    function(reason){
                         $scope.loading.hide();
-                        $ionicPopup.alert({
-                            title: 'Update conference',
-                            content: 'You have correctly update conference list'
-                        });
-                    }else{
-                        $scope.loading.hide();
-                        $ionicPopup.alert({
-                            title: 'Update conference',
-                            content: 'You have already a last conference list'
-                        });
+                        return -1;
                     }
-                },
-                function(reason){
-                    $scope.loading.hide();
-                    return -1;
-                }
-            );
+                );
+            }else{
+                $ionicPopup.alert({
+                    title: ' Unable to update conference list',
+                    content: "You don't have a internet connection"
+                });
+            }
         };
 
         /** Display a conference resume in a conference list **/

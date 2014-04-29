@@ -2,7 +2,7 @@
  * Access Controller
  */
 angular.module('app')
-    .controller('AccessController', ['$scope', function($scope)
+    .controller('AccessController', ['$scope','ConnectionService', function($scope,ConnectionService)
     {
         console.log('--- AccessController ---');
         $scope.fromLilleFlandre = false;
@@ -24,26 +24,33 @@ angular.module('app')
             longitude: 3.029413
         };
 
-        /** Configuration Map **/
-        $scope.map = {
-            center: {
-                latitude: $scope.worldlineGPS.latitude,
-                longitude: $scope.worldlineGPS.longitude
-            },
-            markerWorldline: {
-                "latitude": $scope.worldlineGPS.latitude,
-                "longitude": $scope.worldlineGPS.longitude,
-                "showWindow":true,
-                "title":"Worldine"
-            },
-            markerYou: {
-                "latitude": $scope.worldlineGPS.latitude,
-                "longitude": $scope.worldlineGPS.longitude,
-                "showWindow":true,
-                "title":"Your Position"
-            },
-            zoom: 14
-        };
+        if(ConnectionService.isConnected()) {
+            $scope.connected = true;
+            /** Configuration Map **/
+            $scope.map = {
+                center: {
+                    latitude: $scope.worldlineGPS.latitude,
+                    longitude: $scope.worldlineGPS.longitude
+                },
+                markerWorldline: {
+                    "latitude": $scope.worldlineGPS.latitude,
+                    "longitude": $scope.worldlineGPS.longitude,
+                    "showWindow": true,
+                    "title": "Worldine"
+                },
+                markerYou: {
+                    "latitude": $scope.worldlineGPS.latitude,
+                    "longitude": $scope.worldlineGPS.longitude,
+                    "showWindow": true,
+                    "title": "Your Position"
+                },
+                zoom: 14
+            };
+        }else{
+            $scope.connected = false;
+        }
+
+
 
         /** WorldLine Localisation **/
         $scope.locateWorldline = function(){

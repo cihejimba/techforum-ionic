@@ -20,8 +20,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular-resource": "~1.2.15",
-    "ionic": "1.0.0-beta.1",
-    "angular-google-maps": "~1.0.17"
+    "angular-resource": "1.2.16",
+    "ionic": "1.0.0-beta.2",
+    "angular-google-maps": "1.0.17"
   }
 }

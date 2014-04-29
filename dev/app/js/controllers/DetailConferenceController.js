@@ -2,7 +2,7 @@
  * DetailConference Controller
  */
 angular.module('app')
-    .controller('DetailConferenceController', ['$scope','$stateParams','ConferencesService','MessagesService','$ionicNavBarDelegate','AgendaService','$ionicPopup', function($scope,$stateParams,ConferencesService,MessagesService,$ionicNavBarDelegate,AgendaService,$ionicPopup)
+    .controller('DetailConferenceController', ['$scope','$stateParams','ConferencesService','MessagesService','$ionicNavBarDelegate','AgendaService','$ionicPopup','ConnectionService', function($scope,$stateParams,ConferencesService,MessagesService,$ionicNavBarDelegate,AgendaService,$ionicPopup,ConnectionService)
     {
         console.log('--- DetailConferenceController ---');
 
@@ -43,34 +43,48 @@ angular.module('app')
         /** Post a comment on server for conference with id : idConference **/
         $scope.postComment = function(idConference){
 
-            var commentR = MessagesService.getOnlineMsgComment();
-            var comment = new commentR();
-            comment.name = $scope.newComment.name;
-            comment.msg = $scope.newComment.msg;
-            comment.type = "comment";
-            comment.date = new Date();
-            comment.idConference = idConference;
+            if($scope.newComment.name !== null && $scope.newComment.msg !== null){
+                if(ConnectionService.isConnected()){
 
-            comment.$save(
-                function(data, getResponseHeadersSuccess){
-                    $ionicPopup.alert({
-                        title: 'Send comment',
-                        content: 'Your comment has been sent correctly.'
-                    }).then(function(res) {
-                        getComments();
-                    });
+                    var commentR = MessagesService.getOnlineMsgComment();
+                    var comment = new commentR();
+                    comment.name = $scope.newComment.name;
+                    comment.msg = $scope.newComment.msg;
+                    comment.type = "comment";
+                    comment.date = new Date();
+                    comment.idConference = idConference;
 
-                },
-                function(data,getResponseHeadersError){
+                    comment.$save(
+                        function(data, getResponseHeadersSuccess){
+                            $ionicPopup.alert({
+                                title: 'Send comment',
+                                content: 'Your comment has been sent correctly.'
+                            }).then(function(res) {
+                                $scope.newComment.name = null;
+                                $scope.newComment.msg = null;
+                                getComments();
+                            });
+                        },
+                        function(data,getResponseHeadersError){
+                            $ionicPopup.alert({
+                                title: 'Send comment',
+                                content: 'Impossible to send your comment'
+                            });
+                        }
+                    );
+                }else{
                     $ionicPopup.alert({
-                        title: 'Send comment',
-                        content: 'Impossible to send your comment'
+                        title: 'unable to send comment',
+                        content: "You don't have a internet connection"
                     });
                 }
-            );
+            }else{
+                $ionicPopup.alert({
+                    title: 'Warning',
+                    content: "You must complete all the fields"
+                });
+            }
 
-            $scope.newComment.name = null;
-            $scope.newComment.msg = null;
 
         };
 

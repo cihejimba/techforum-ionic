@@ -5,6 +5,9 @@
     margin-top: 20px;
     text-align: center;
 }
+.logo span{
+    display:block;
+}
 .actual-day{
     margin-top: 10px;
     text-align: center;
@@ -113,7 +116,7 @@ p.room-detail-conference{
 \*****************************/
 
 textarea.field-comment, input.field-comment{
-    width: 50%;
+    width: 99%;
     border : 1px solid #e5e5e5;
 }
 .last-field-comment{
