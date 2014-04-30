@@ -73,7 +73,7 @@ The development environment is now installed
 If you use mac ou linux
 ```bash
 chmod u+x script.sh
-perl -i -pe 'y|\r||d' script.pl
+perl -i -pe 'y|\r||d' script.sh
 ```
 
 ```bash
@@ -84,6 +84,7 @@ $ sh script
 ```bash
 $ cordova plugin add org.apache.cordova.splashscreen
 $ cordova plugin add org.apache.cordova.geolocation
+$ cordova plugin add org.apache.cordova.network-information
 ```
 
 ### To build for Android
@@ -115,6 +116,7 @@ _If you have a problem to install Cordova plugin_
 Download the git of the plugin using the zip download of git site
 * [https://github.com/apache/cordova-plugin-splashscreen](https://github.com/apache/cordova-plugin-splashscreen)
 * [https://github.com/apache/cordova-plugin-geolocation](https://github.com/apache/cordova-plugin-geolocation)
+* [https://github.com/apache/cordova-plugin-network-information](https://github.com/apache/cordova-plugin-network-information)
 
 Extract the zip to some path
 ```bash

@@ -6,15 +6,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
 
     navigator.splashscreen.hide();
+    document.addEventListener("backbutton", function(){
 
-    document.addEventListener("backbutton", function(e){
-
-/*        if($.mobile.activePage.is('#homepage')){
-            e.preventDefault();
-            navigator.app.exitApp();
-        }
-        else {
-            navigator.app.backHistory();
+       /* if(confirm("Do you want to quit techForum 2014 ?")){
+            ionic.Platform.exitApp();
         }*/
 
     }, false);
@@ -106,4 +101,9 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
                 }
             });
         $urlRouterProvider.otherwise('/tab/home');
-    }]);
+    }]
+);
+
+app.run(['$state','$ionicPlatform',function($state,$ionicPlatform){
+    console.log("This is a run !!");
+}]);

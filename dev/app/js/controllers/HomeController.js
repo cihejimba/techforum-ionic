@@ -7,6 +7,19 @@ angular.module('app')
 
         console.log('--- HomeController ---');
 
+       /* $ionicPlatform.onHardwareBackButton(function(e){
+            e.preventDefault();
+            $ionicPopup.confirm({
+                title: 'Quit TechForum 2014 app',
+                content: 'Do you want to close TechForum app ?'
+            }).then(function(res) {
+                if(res) {
+                    ionic.Platform.exitApp();
+                }else
+                    e.preventDefault();
+            });
+        });*/
+
         var day1 = new Date(2014,5,03);
         var day2 = new Date(2014,5,04);
         var dayEnd = new Date(2014,6,04);
