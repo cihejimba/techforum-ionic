@@ -6,13 +6,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
 
     navigator.splashscreen.hide();
-    document.addEventListener("backbutton", function(){
-
-       /* if(confirm("Do you want to quit techForum 2014 ?")){
-            ionic.Platform.exitApp();
-        }*/
-
-    }, false);
 }
 /**
  * Modules declaration
@@ -103,7 +96,3 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
         $urlRouterProvider.otherwise('/tab/home');
     }]
 );
-
-app.run(['$state','$ionicPlatform',function($state,$ionicPlatform){
-    console.log("This is a run !!");
-}]);
