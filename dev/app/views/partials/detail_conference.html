@@ -26,6 +26,12 @@
                 <p class="col ion-clock"> Schedule : <span class="italic">{{conference.when.start}} - {{conference.when.end}}</span></p>
             </div>
             <div class="row">
+                <p class="col ion-location"> Room : <span class="italic">Room {{conference.where}}</span></p>
+            </div>
+            <div class="row">
+                <p class="col ion-compose"> Theme : <span class="italic">{{conference.theme}}</span></p>
+            </div>
+            <div class="row">
                 <div class="col item item-divider icon ion-chevron-down show-description" ng-click="displayDescription()" ng-class="{'ion-chevron-up' :showHideComment == 'hide'}">
                     {{showHideComment}} description
                 </div>
@@ -35,10 +41,6 @@
                  </p>
             </div>
 
-            <div class="row">
-                <p class="col col-33 room-detail-conference" >Room {{conference.where}}</p>
-                <p class="col col-67 theme-detail-conference center">{{conference.theme}} </p>
-            </div>
             <div class="row">
                 <button class="button button-block button-assertive" ng-click="addAgenda(conference._id)">
                     Add to Agenda

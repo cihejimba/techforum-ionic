@@ -1,7 +1,7 @@
 <ion-view title="Agenda" ng-init="getAgendaAndConference()">
     <ion-content class="has-header has-tabs" padding="true">
 
-        <p  class="italic" ng-show="!myAgenda.length">You don't have conference in your agenda</p>
+        <p  class="italic center" ng-show="!myAgenda.length">You don't have conference in your agenda</p>
 
         <!-- AGENDA FOR THE DAY 1 -->
         <p class="center"><strong>Day 1</strong></p>
@@ -36,7 +36,7 @@
                         <p class="col col-80"><strong>{{conferenceAgenda.title}}</strong></p>
                     </div>
                     <div class="row">
-                        <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id);$event.stopPropagation()">Delete</ion-delete-button>
+                        <span class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id);$event.stopPropagation()">Delete</span>
                     </div>
                 </ion-item>
                 <div class="row" ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day1).length">
