@@ -76,6 +76,10 @@ angular.module('app')
                     },
                     function(reason){
                         $scope.loading.hide();
+                        $ionicPopup.alert({
+                            title: ' Unable to update conference list',
+                            content: "Impossible to retrieve a conference list"
+                        });
                         return -1;
                     }
                 );
