@@ -11,12 +11,10 @@ _A Mobile Application for Worldline TechForum 2014_
 
 **Developer :** Maxime Gens
 
-> **Warning**
+> **Download application**
 
-> Ionic Framework doesn't work correctly with Android version below 4.0.
-> Use a natif Android Application TechForum 2014 for these versions 
-
-> [Here a link to futur android app](https://github.com/got5/techforum-ionic)
+> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.apk)
+> [Techforum 2014 IOS](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/)
 
 ## To install development development and production environments
 
@@ -82,8 +80,10 @@ $ sh script
 
 **Add cordova plugin**
 ```bash
+For Android and IOS
 $ cordova plugin add org.apache.cordova.splashscreen
 $ cordova plugin add org.apache.cordova.geolocation
+Only for Android
 $ cordova plugin add org.apache.cordova.network-information
 ```
 
