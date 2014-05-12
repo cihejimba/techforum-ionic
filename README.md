@@ -18,7 +18,7 @@ _A Mobile Application for Worldline TechForum 2014_
 
 > **Download application**
 
-> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/mise_en_situation.png)
+> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.apk)
 
 > [Techforum 2014 IOS](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.ipa)
 
