@@ -11,11 +11,16 @@ _A Mobile Application for Worldline TechForum 2014_
 
 **Developer :** Maxime Gens
 
+
+> **It's a mobile app for TechForum 2014 in WorldLine. TechForum eXplore is an internal conference dedicated to topics related to technology, through 2 main lines: technical breakthroughs & achievements, and exploratory works on various topics.**
+
+![techForum](https://www.dropbox.com/s/kkabhsoibfcg2qi/mise_en_situation_iphone_samsungs4.png)
+
 > **Download application**
 
-> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.apk)
+> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/mise_en_situation.png)
 
-> [Techforum 2014 IOS](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/)
+> [Techforum 2014 IOS](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.ipa)
 
 ## To install development development and production environments
 
