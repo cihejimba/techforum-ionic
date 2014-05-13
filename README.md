@@ -26,7 +26,7 @@ _A Mobile Application for Worldline TechForum 2014_
 
 Install a follow components
 
-Use "**sudo**" if you buil with Mac and Linux
+Use "**sudo**" to build with Mac and Linux
 
 **Node.js**
 
@@ -131,6 +131,11 @@ cordova plugin add [pathtotheextractedplugingit]cordova-plugin-splashscreen-mast
 ```
 
 ## To test in Development Environments
+
+**Karma**
+```bash
+npm install -g karma-cli
+```
 
 Install Ripple emulator for Google Chrome
 

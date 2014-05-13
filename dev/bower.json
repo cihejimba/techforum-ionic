@@ -1,6 +1,6 @@
 {
   "name": "TechForum2014",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Mobile Application for Worldline TechForum 2014",
   "keywords": [
     "TechForum",
@@ -21,7 +21,10 @@
   ],
   "dependencies": {
     "angular-resource": "1.2.16",
-    "ionic": "1.0.0-beta.2",
+    "ionic": "1.0.0-beta.4",
     "angular-google-maps": "1.0.17"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.12"
   }
 }
