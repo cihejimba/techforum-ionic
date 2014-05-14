@@ -18,11 +18,11 @@ _A Mobile Application for Worldline TechForum 2014_
 
 > **Download application**
 
-> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/mise_en_situation.png)
+> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.apk)
 
 > [Techforum 2014 IOS](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.ipa)
 
-## To install development development and production environments
+## To install development and production environments
 
 Install a follow components
 
@@ -74,7 +74,7 @@ The development environment is now installed
 
 **To install prod environnement**
 
-If you use mac ou linux
+If you use mac or linux
 ```bash
 chmod u+x script.sh
 perl -i -pe 'y|\r||d' script.sh
