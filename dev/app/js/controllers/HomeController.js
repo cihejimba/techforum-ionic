@@ -30,6 +30,7 @@ angular.module('app')
         }else
             $scope.current_day.day = 0;
 
+
         /** Retrieve a conference in function of day and schedule to display a next conference **/
         $scope.getConf = function(){
             if (localStorage.getItem('conferences') === null) {

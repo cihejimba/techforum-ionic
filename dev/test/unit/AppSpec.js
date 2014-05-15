@@ -37,14 +37,31 @@ describe("App config Tests", function() {
         });
     });
 
-    describe("Testing routes", function() {
+    describe("Testing controllers", function() {
 
-        beforeEach(function() {
-            deps = module.value('appName').requires;
+        var app;
+
+        beforeEach(function(){
+            app = angular.module("app");
         });
 
-        it("Existing Home  ", function() {
-
+        it("should have a 'HomeController'", function() {
+            expect(app.HomeController).not.toBe(null);
+        });
+        it("should have a 'ConferencesController'", function() {
+            expect(app.ConferencesController).not.toBe(null);
+        });
+        it("should have a 'ConferencesbyScheduleController'", function() {
+            expect(app.ConferencesbyScheduleController).not.toBe(null);
+        });
+        it("should have a 'DetailConferenceController'", function() {
+            expect(app.DetailConferenceController).not.toBe(null);
+        });
+        it("should have a 'AgendaController'", function() {
+            expect(app.AgendaController).not.toBe(null);
+        });
+        it("should have a 'AccessController'", function() {
+            expect(app.AccessController).not.toBe(null);
         });
 
     });
