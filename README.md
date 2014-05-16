@@ -132,10 +132,20 @@ cordova plugin add [pathtotheextractedplugingit]cordova-plugin-splashscreen-mast
 
 ## To test in Development Environments
 
-**Karma**
+**Execute Unit Tests**
+
+Install Karma
 ```bash
 npm install -g karma-cli
 ```
+
+launch tests
+ ```bash
+cd dev/test
+karma start karma.conf.js
+ ```
+
+**Emulate Application on browser**
 
 Install Ripple emulator for Google Chrome
 
