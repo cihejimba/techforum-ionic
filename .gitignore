@@ -6,6 +6,11 @@ merges
 
 .idea
 
+#MACOSX
+
+.DS_Store
+
+
 #Node
 dev/node_modules/**/*
 www/node_modules/**/*
