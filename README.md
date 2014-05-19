@@ -50,6 +50,9 @@ _Configure Bower proxy_
 
 Add in .bowerrc
 ```bash
+cd dev/
+nano .bowerrc
+Add this =>
 "proxy":"http://[proxy]:[PORT]",
 "https-proxy":"http://[proxy]:[PORT]"
 ```
