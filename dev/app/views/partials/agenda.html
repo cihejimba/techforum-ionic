@@ -105,7 +105,9 @@
                         <p class="col col-20 room-conference">R {{conferenceAgenda.where}}</p>
                         <p class="col col-80"><strong>{{conferenceAgenda.title}}</strong></p>
                     </div>
-                    <ion-delete-button class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id);$event.stopPropagation()">Delete</ion-delete-button>
+                    <div class="row">
+                        <span class="delete-conference-in-agenda" ng-click="onItemDelete(conferenceAgenda._id);$event.stopPropagation()">Delete</span>
+                    </div>
                 </ion-item>
                 <div class="row" ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day2).length">
                     <p class="col">You don't have a conference</p>
