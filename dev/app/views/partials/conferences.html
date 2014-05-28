@@ -3,9 +3,9 @@
         <button class="button-clear icon ion-refresh reload-conference" ng-click="updateConference()"></button>
     </ion-nav-buttons>
     <section class="bar bar-subheader item-input-inset no-border">
-        <div class="button-bar" ng-init="search.day = 1">
-            <a class="button" ng-click="search.day = 1; numButton = 1" ng-class="{activeDay :numButton == 1}">Day 1</a>
-            <a class="button" ng-click="search.day = 2; numButton = 2" ng-class="{activeDay :numButton == 2}">Day 2</a>
+        <div class="button-bar">
+            <a class="button" ng-click="clickPageDay(1)" ng-class="{activeDay :numButton == 1}">Day 1</a>
+            <a class="button" ng-click="clickPageDay(2)" ng-class="{activeDay :numButton == 2}">Day 2</a>
         </div>
     </section>
     <section class="bar bar-subheader item-input-inset">
