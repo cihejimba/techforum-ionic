@@ -109,6 +109,7 @@ $ cordova run android
 ```
 
 ### To build for IOS
+You should run on Mac OX
 ```bash
 $ cordova platform add ios
 Add Splascreen and Icon
@@ -131,6 +132,7 @@ Extract the zip to some path
 ```bash
 cordova plugin add [pathtotheextractedplugingit]cordova-plugin-geolocation-master
 cordova plugin add [pathtotheextractedplugingit]cordova-plugin-splashscreen-master
+cordova plugin add [pathtotheextractedplugingit]cordova-plugin-network-information-master
 ```
 
 ## To test in Development Environments

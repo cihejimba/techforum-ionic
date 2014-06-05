@@ -1,6 +1,4 @@
 {
   "directory": "app/libs",
-  "json": "bower.json",
-  "proxy":"http://proxy.priv.atos.fr:3128",
-  "https-proxy":"http://proxy.priv.atos.fr:3128"
+  "json": "bower.json"
 }
