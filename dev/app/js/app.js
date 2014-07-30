@@ -12,6 +12,13 @@ function onDeviceReady(){
 var app = angular.module('app', ['ionic','ngResource','techForum.filters','google-maps']);
 
 /**
+ * Constant ionic
+ */
+app.constant('$ionicLoadingConfig', {
+    template: '<div>Loading conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>'
+});
+
+/**
  * Route configuration
  */
 app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

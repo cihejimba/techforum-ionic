@@ -35,23 +35,19 @@ angular.module('app')
          * **/
         $scope.getAllConf = function(){
             if (localStorage.getItem('conferences') === null) {
-                $scope.loading = $ionicLoading.show({
-                    content: '<div>Loading conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
-                    animation: 'fade-in',
-                    showBackdrop: true,
-                    maxWidth: 200,
-                    showDelay: 0
-                });
+
+                $ionicLoading.show();
+
                 ConferencesService.getLocalConferences().query(
                     function(data){
                         $scope.conferences = data;
                         $scope.scheduleconferences = ConferencesService.sortConferenceByStart($scope.conferences);
                         localStorage.setItem('conferences', JSON.stringify(data));
-                        $scope.loading.hide();
+                        $ionicLoading.hide();
                     },
                     function(reason){
                         alert('Unable to retrieve conferences list');
-                        $scope.loading.hide();
+                        $ionicLoading.hide();
                     }
                 );
             } else {
@@ -65,13 +61,7 @@ angular.module('app')
 
             if(ConnectionService.isConnected()){
 
-                $scope.loading = $ionicLoading.show({
-                    content: '<div>Update conferences list<br><figure><img src="img/atos-loader.gif"/></figure></div>',
-                    animation: 'fade-in',
-                    showBackdrop: true,
-                    maxWidth: 200,
-                    showDelay: 0
-                });
+                $ionicLoading.show();
 
                 ConferencesService.getOnlineConference().query(
                     function(confOnline){
@@ -79,13 +69,13 @@ angular.module('app')
                             $scope.conferences = confOnline;
                             ConferencesService.setConferencesResource(confOnline);
                             localStorage.setItem('conferences', JSON.stringify(confOnline));
-                            $scope.loading.hide();
+                            $ionicLoading.hide();
                             $ionicPopup.alert({
                                 title: 'Update conference',
                                 content: 'You have correctly update conference list'
                             });
                         }else{
-                            $scope.loading.hide();
+                            $ionicLoading.hide();
                             $ionicPopup.alert({
                                 title: 'Update conference',
                                 content: 'You have already a last conference list'
@@ -93,7 +83,7 @@ angular.module('app')
                         }
                     },
                     function(reason){
-                        $scope.loading.hide();
+                        $ionicLoading.hide();
                         $ionicPopup.alert({
                             title: ' Unable to update conference list',
                             content: "Impossible to retrieve a conference list"

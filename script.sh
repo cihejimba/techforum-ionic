@@ -46,9 +46,6 @@ cp dev/app/libs/ionic/release/css/ionic.min.css www/app/libs/ionic/release/css
 mkdir -p www/app/libs/angular-resource
 cp dev/app/libs/angular-resource/angular-resource.min.js www/app/libs/angular-resource
 
-mkdir -p www/app/libs/underscore
-cp dev/app/libs/underscore/underscore-min.js www/app/libs/underscore
-
 mkdir -p www/app/libs/angular-google-maps/dist
 cp dev/app/libs/angular-google-maps/dist/angular-google-maps.min.js www/app/libs/angular-google-maps/dist
 

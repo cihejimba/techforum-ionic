@@ -6,7 +6,7 @@
         <!-- AGENDA FOR THE DAY 1 -->
         <p class="center event-day"><strong>DAY 1 </strong> <br/> 3<sup>rd</sup> June 2014</strong></p>
 
-        <ion-list show-delete="true">
+        <ion-list>
 
             <div class="schedule-tab">
                 <p>Start 08:00 - 08:30</p>
@@ -47,7 +47,7 @@
                 </ion-item>
                 <div class="row" ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day1).length">
                     <p class="col">You don't have a conference</p>
-                    <button class="col" ng-click="viewConferenceWithTime(day.day1,itemSchedule);$event.stopPropagation()">Add conference</button>
+                    <button class="button col" ng-click="viewConferenceWithTime(day.day1,itemSchedule);$event.stopPropagation()">Add conference</button>
                 </div>
             </div>
 
@@ -111,7 +111,7 @@
                 </ion-item>
                 <div class="row" ng-hide ="(myAgenda  | scheduleByConference:itemSchedule:day.day2).length">
                     <p class="col">You don't have a conference</p>
-                    <button class="col" ng-click="viewConferenceWithTime(day.day2,itemSchedule);">Add conference</button>
+                    <button class="button col" ng-click="viewConferenceWithTime(day.day2,itemSchedule);">Add conference</button>
                 </div>
             </div>
 

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.worldline.techforum" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>TechForum 2014</name>
+<widget id="com.worldline.techforum" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>TechForum eXplore 2014</name>
     <description>
-        Application TechForum 2014 Atos WorldLine.
+        Application TechForum eXplore 2014 Atos WorldLine.
     </description>
     <author email="maxime.gens@worldline.com" href="http://worldline.com/en/1/Home.html">
         Maxime Gens - SDCO - Software Engineering - Web and Mobile Frameworks
