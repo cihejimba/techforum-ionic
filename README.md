@@ -113,11 +113,11 @@ $ cordova run android
 You should run on Mac OX
 ```bash
 $ cordova platform add ios
-Add Splascreen and Icon
-$  cp -r dev/res/ios/icons/ platforms/ios/TechForum\ 2014/Resources/icons
-$  cp -r dev/res/ios/splash platforms/ios/TechForum\ 2014/Resources/
-To launch a emulator (update xcode before)
 $ cordova build ios
+Add Splascreen and Icon
+$  cp -r dev/res/ios/icons/ platforms/ios/TechForum\ eXplore\ 2014/Resources/icons
+$  cp -r dev/res/ios/splash platforms/ios/TechForum\ eXplore\ 2014/Resources/
+To launch a emulator (update xcode before)
 $ cordova emulate ios
 ```
 
