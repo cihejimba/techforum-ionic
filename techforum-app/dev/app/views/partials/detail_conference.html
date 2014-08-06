@@ -1,0 +1,83 @@
+<ion-view title="Conference information" ng-init="getConference()">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="back()">
+            <div><i class="ion-chevron-left"> Back</i></div>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header has-tabs" padding="true">
+
+        <!-- DETAIL CONFERENCE -->
+        <section class="info-conference">
+            <div class="row">
+                <p class="col center"><strong>{{conference.title}}</strong></p>
+            </div>
+            <div class="row">
+                <p class="col ion-mic-c"> Speaker : <span class="italic">{{conference.author}}</span></p>
+            </div>
+            <div class="row" ng-show="conference.bu != 'null'">
+                <p class="col ion-ios7-briefcase"> B.U : <span class="italic">{{conference.bu}}</span></p>
+            </div>
+            <div class="row">
+                <p class="col ion-calendar"> Day : <span class="italic">{{conference.day}}</span></p>
+            </div>
+            <div class="row">
+                <p class="col ion-clock"> Schedule : <span class="italic">{{conference.when.start}} - {{conference.when.end}}</span></p>
+            </div>
+            <div class="row">
+                <p class="col ion-location"> Room : <span class="italic">Room {{conference.where}}</span></p>
+            </div>
+            <div class="row">
+                <p class="col ion-compose"> Theme : <span class="italic">{{conference.theme}}</span></p>
+            </div>
+            <div class="row">
+                <div class="col item item-divider icon ion-chevron-down show-description" ng-click="displayDescription()" ng-class="{'ion-chevron-up' :showHideComment == 'hide'}">
+                    {{showHideComment}} description
+                </div>
+            </div>
+            <div class="row" ng-show="showHideComment == 'hide'">
+                 <p class="description">{{conference.description}}
+                 </p>
+            </div>
+
+            <div class="row">
+                <button class="button button-block button-assertive" ng-click="addAgenda(conference._id)">
+                    Add to Agenda
+                </button>
+            </div>
+        </section>
+
+        <!-- POST A COMMENT -->
+        <section>
+            <fieldset>
+                <legend>Post a comment</legend>
+                Name : <input class="field-comment" type="text" ng-model="newComment.name" placeholder=" name"/>
+
+                Content : <textarea rows="4" class="field-comment last-field-comment" type="text" ng-model="newComment.msg" placeholder=" Enter your message"></textarea>
+                <button class="button" ng-click="postComment(conference._id)">Send comment</button><br/>
+            </fieldset>
+        </section>
+
+        <!-- VIEW COMMENT FOR THIS CONFERENCE -->
+        <section>
+            <p class="title-comments">Comments</p>
+            <p ng-hide="comments.length">No comments for this conferences {{loadingComment}}</p>
+            <ion-list >
+                <tr>
+                <ion-item class="comment-item" ng-repeat="comment in comments | orderBy:'date':true">
+                    <div class="row">
+                        <p class="col"><strong>Name : {{comment.name}}</strong></p>
+                    </div>
+                    <div class="row">
+                        <p class="col italic">Date : {{comment.date | date : "MMM d, y h:mm:ss a"}}</p>
+                    </div>
+                    <div class="row">
+                        <textarea class="col">{{comment.msg}}</textarea>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </section>
+
+    </ion-content>
+</ion-view>

@@ -14,14 +14,14 @@ _A Mobile Application for Worldline TechForum 2014_
 
 > **It's a mobile app for TechForum 2014 in WorldLine. TechForum eXplore is an internal conference dedicated to topics related to technology, through 2 main lines: technical breakthroughs & achievements, and exploratory works on various topics.**
 
-![techForumAnimation](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/techforum_animation.gif)
-----![techForum](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/mise_en_situation.png)
+![techForumAnimation](https://raw.githubusercontent.com/got5/techforum-ionic/master/techforum-app/bin/techforum_animation.gif)
+----![techForum](https://raw.githubusercontent.com/got5/techforum-ionic/master/techforum-app/bin/mise_en_situation.png)
 
 > **Download application**
 
-> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.apk)
+> [Techforum 2014 Android](https://raw.githubusercontent.com/got5/techforum-ionic/master/techforum-app/bin/TechForum2014.apk)
 
-> [Techforum 2014 IOS](https://raw.githubusercontent.com/got5/techforum-ionic/master/bin/TechForum2014.ipa)
+> [Techforum 2014 IOS](https://raw.githubusercontent.com/got5/techforum-ionic/master/techforum-app/bin/TechForum2014.ipa)
 
 ## To install development and production environments
 
@@ -51,7 +51,7 @@ _Configure Bower proxy_
 
 Add in .bowerrc
 ```bash
-cd dev/
+cd techforum-app/dev/
 nano .bowerrc
 Add this =>
 "proxy":"http://[proxy]:[PORT]",
@@ -170,3 +170,6 @@ Application is now running in :
 ## Training PhoneGap/Cordova and Ionic Framework
 It's a training for PhoneGap/Cordova and a exercice to learn Ionic Framework
 It's in a "techforum_training" folder
+
+> [Download Presentation Cordova - Ionic ](https://raw.githubusercontent.com/got5/techforum-ionic/master/techforum-training/Training_cordova.pptx)
+

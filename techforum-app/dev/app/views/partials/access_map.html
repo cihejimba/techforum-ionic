@@ -1,0 +1,64 @@
+<ion-view title="Access Map">
+
+    <div class="bar bar-subheader item-input-inset">
+        <h1 class="title">How to get here</h1>
+    </div>
+
+    <ion-content class="has-subheader has-tabs" padding="true">
+
+        <!-- ROUTE TO WORLDLINE  -->
+        <div class="list ">
+            <div class="item item-divider icon ion-chevron-down" ng-click="displayFrom('lille')" ng-class="{'ion-chevron-up' :fromLilleFlandre}">
+                From Lille Flandres
+            </div>
+            <div class="list-map" ng-show="fromLilleFlandre" >
+                <strong>Subway and Bus (35 minutes)</strong>
+                <ul class="italic">
+                    <li> - Take Subway line 1 to "Lille - C.H.R B.Calmette"</li>
+                    <li> - To get off at subway stop "Lille - C.H.R B.Calmette"</li>
+                    <li> - Take Bus line 52 to "Seclin - Seclin Centre Hospitalier"</li>
+                    <li> - To get off at bus stop "Marcel Paul"</li>
+                </ul>
+            </div>
+
+            <div class="item item-divider icon ion-chevron-down" ng-click="displayFrom('lesquin')" ng-class="{'ion-chevron-up' :fromlesquin}">
+                Lesquin - Aeroport De Lille
+            </div>
+            <div class="list-map" ng-show="fromlesquin">
+                <strong>Bus - Subway and Bus (1h)</strong>
+                <ul class="italic">
+                    <li> - Take Bus "Bus Aéroport" to " Lille - Gare Lille Flandres"</li>
+                    <li> - To get off at subway stop " Lille - Gare Lille Flandres"</li>
+                    <li> - Take Subway line 1 to "Lille - C.H.R B.Calmette"</li>
+                    <li> - To get off at subway stop "Lille - C.H.R B.Calmette"</li>
+                    <li> - Take Bus line 52 to "Seclin - Seclin Centre Hospitalier"</li>
+                    <li> - To get off at bus stop "Marcel Paul"</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div ng-show="connected">
+            <!-- BUTTON GEOLOCALISATION -->
+            <div class="row">
+                <button class="col button-geo button button-positive" ng-click="locateWorldline()">Where is Worldline ?</button>
+                <button class="col button-geo button button-positive" ng-click="getMyposition()">Locate Me</button>
+            </div>
+
+            <!-- GOOGLE MAP -->
+            <google-map center="map.center" zoom="map.zoom" draggable="true" refresh="true">
+                <marker coords="map.markerWorldline">
+                    <window isIconVisibleOnClick="true">
+                        <p>
+                            <strong>Atos Worldline</strong><br/>
+                            <span style="font-style: italic">23 Rue de la Pointe 59113 Seclin</span>
+                        </p>
+                    </window>
+                </marker>
+                <marker coords="map.markerYou"></marker>
+            </google-map>
+        </div>
+        <p ng-hide="connected" class="center">You don't have a internet connection to display a map</p>
+
+    </ion-content>
+</ion-view>

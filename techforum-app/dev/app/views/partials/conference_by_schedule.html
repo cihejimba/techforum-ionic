@@ -1,0 +1,22 @@
+<ion-view title="Conference">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="backAgenda()">
+            <div><i class="ion-chevron-left"> Agenda</i></div>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header has-tabs" padding="true">
+
+        <div class="schedule-tab" >
+            <p ng-model="schedule.when.start"><strong>Day : {{day}} - {{schedule}}</strong> <br/>You can to add</p>
+            <ion-item ng-repeat="conference in conferences | scheduleByConference:schedule:day | orderBy:'where'" ng-click="viewConference(conference._id)" >
+                <div class ="row">
+                    <p class="col col-20 room-conference">R {{conference.where}}</p>
+                    <p class="col col-80"><strong>{{conference.title}}</strong></p>
+                </div>
+            </ion-item>
+        </div>
+    </ion-content>
+
+</ion-view>

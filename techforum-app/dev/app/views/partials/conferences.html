@@ -1,0 +1,50 @@
+<ion-view title="Conferences" right-buttons="rightButtons" ng-init="getAllConf()">
+    <ion-nav-buttons side="right">
+        <button class="button-clear icon ion-refresh reload-conference" ng-click="updateConference()"></button>
+    </ion-nav-buttons>
+    <section class="bar bar-subheader item-input-inset no-border">
+        <div class="button-bar">
+            <a class="button" ng-click="clickPageDay(1)" ng-class="{activeDay :numButton == 1}">Day 1</a>
+            <a class="button" ng-click="clickPageDay(2)" ng-class="{activeDay :numButton == 2}">Day 2</a>
+        </div>
+    </section>
+    <section class="bar bar-subheader item-input-inset">
+        <p class="nbConference">{{(conferences |filter:search).length}} conferences in day {{search.day}}</p>
+    </section>
+
+    <ion-content class="has-subheader has-tabs" padding="true">
+        <br/>
+
+        <!-- CONFERENCES LIST -->
+        <ion-list>
+            <div class="schedule-tab" ng-repeat="itemSchedule in scheduleconferences" ng-show="(conferences  | scheduleByConference:itemSchedule:search.day).length">
+                <p ng-model="schedule.when.start">Start {{itemSchedule}}</p>
+                 <ion-item  ng-repeat="conference in conferences  | scheduleByConference:itemSchedule:search.day | orderBy:'where'" ng-click="DisplayConference(conference)">
+                    <div ng-class="{activeConference: conference._id==selectedConferenceId}">
+                        <div class ="row">
+                            <p class="col col-20 room-conference">R {{conference.where}}</p>
+                            <p class="col col-80"><strong>{{conference.title}}</strong></p>
+                        </div>
+                        <div ng-show="conference._id==selectedConferenceId">
+                            <div class="row">
+                                <p class="col">{{conference.title}}</p>
+                            </div>
+                            <div class="row">
+                                <p class="col">Schedule : {{conference.when.start}} - {{conference.when.end}}</p>
+                            </div>
+                            <div class="row">
+                                <p class="col col-67 theme-conference">{{conference.theme}} </p>
+                                <button class="col col-33 button button-calm button-view-more" ng-click="viewConference(conference._id)" >View More</button>
+                            </div>
+                        </div>
+                    </div>
+                 </ion-item>
+            </div>
+        </ion-list>
+
+    </ion-content>
+</ion-view>
+
+
+
+
