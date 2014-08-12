@@ -1,0 +1,1 @@
+adb shell monkey -p com.worldline.techforum --pct-touch 50 --pct-motion 50 -v 5000

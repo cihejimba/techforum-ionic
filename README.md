@@ -150,6 +150,17 @@ launch tests
 cd dev/test
 karma start karma.conf.js
  ```
+ 
+ **Execute Interface Test**
+ You must have a adb in your computer
+ ```bash
+cd dev/test
+For fast test
+sh test_interface_android_fast
+For a complet interface test
+sh test_interface_android_complet
+```
+ 
 
 **Emulate Application on browser**
 
