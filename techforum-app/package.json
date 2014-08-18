@@ -1,0 +1,15 @@
+{
+  "name": "techforum-app",
+  "version": "1.0.0",
+  "description": "Application techforum eXplore 2014",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maxime Gens",
+  "license": "ISC",
+  "dependencies": {
+    "cordova": "^3.5.0-0.2.7",
+    "grunt-cli": "^0.1.13"
+  }
+}
